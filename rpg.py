@@ -104,7 +104,7 @@ def novoJogo():
                 "Classe": "⚔️ﾠﾠGuerreiro",
                 "Atributos": {
                     "Vida": 100,
-                    "Forca": 7,
+                    "Dano": 7,
                     "Sorte": 3,
                     "XP": 0,
                     "Moeda": 0,
@@ -126,7 +126,7 @@ def novoJogo():
                 "Classe": "🧙ﾠMago",
                 "Atributos": {
                     "Vida": 100,
-                    "Forca": 4,
+                    "Dano": 4,
                     "Sorte": 4,
                     "XP": 0,
                     "Moeda": 0,
@@ -148,7 +148,7 @@ def novoJogo():
                 "Classe": "🏹ﾠArqueiro",
                 "Atributos": {
                     "Vida": 125,
-                    "Forca": 2,
+                    "Dano": 2,
                     "Sorte": 7,
                     "XP": 0,
                     "Moeda": 0,
@@ -239,7 +239,7 @@ def tutorial():
                 ganhoXP = random.randint(1, 4)
                 
                 if personagem['Atributos']['Sorte'] >= chance:
-                    monstros['monstroInicial']['Vida'] -= personagem['Atributos']["Forca"]
+                    monstros['monstroInicial']['Vida'] -= personagem['Atributos']["Dano"]
                     print(f"{monstros['monstroInicial']['Nome']} está com {monstros['monstroInicial']['Vida']} de vida.")
                     
                     if personagem['Atributos']['Vida'] <= 0 or monstros['monstroInicial']['Vida'] <= 0:
@@ -292,11 +292,11 @@ def tutorial():
                             print(f"{monstros['monstroInicial']['Nome']} errou o ataque.")
                 else:
                     print("Item não encontrado")
-                    print(f"\nObrigado por salvar nossas vidas, pegue esse Moeda como recompensa")
-                    personagem['Atributos']['Moeda'] += ganhoMoeda + 2
-                    print(f"💰ﾠR$: {personagem['Atributos']['Moeda']}")
-                    time.sleep(5) 
-                    exploracao()
+    print(f"\nObrigado por salvar nossas vidas, pegue esse Moeda como recompensa")
+    personagem['Atributos']['Moeda'] += ganhoMoeda + 2
+    print(f"💰ﾠR$: {personagem['Atributos']['Moeda']}")
+    time.sleep(5) 
+    exploracao()
     
 def caverna():
     global personagem
