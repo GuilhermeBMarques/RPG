@@ -35,10 +35,10 @@ def clear():
 def recompensa(): 
     global personagem
     
-    ganhoDinheiro = random.randint(1, 8)
+    ganhoMoeda = random.randint(1, 8)
     ganhoXP = random.randint(1, 4)
     
-    personagem['Atributos']['Dinheiro'] += ganhoDinheiro
+    personagem['Atributos']['Moeda'] += ganhoMoeda
     personagem['Atributos']['XP'] += ganhoXP
     
 def iniciarJogo():
@@ -107,10 +107,12 @@ def novoJogo():
                     "Forca": 7,
                     "Sorte": 3,
                     "XP": 0,
-                    "Dinheiro": 0,
+                    "Moeda": 0,
                 },
                 "Mochila": {
                     "Cura": 2,
+                    "Mana": 1,
+                    "Sorte": 0,
                 },
                 "Habilidades": ["Ataque Brutal", "Escudo de Ferro"]
             }
@@ -127,11 +129,12 @@ def novoJogo():
                     "Forca": 4,
                     "Sorte": 4,
                     "XP": 0,
-                    "Dinheiro": 0,
+                    "Moeda": 0,
                 },
                 "Mochila": {
                     "Cura": 2,      
-                    "Mana": 3,        
+                    "Mana": 3,   
+                    "Sorte": 0,     
                 },
                 "Habilidades": ["Bola de Fogo", "Relâmpago em Cadeia"]
             }
@@ -148,10 +151,12 @@ def novoJogo():
                     "Forca": 2,
                     "Sorte": 7,
                     "XP": 0,
-                    "Dinheiro": 0,
+                    "Moeda": 0,
                 },
                 "Mochila": {
                     "Cura": 2,
+                    "Mana": 1,
+                    "Sorte": 0,
                 },
                 "Habilidades": ["Tiro Preciso", "Camuflagem"]
             }
@@ -230,7 +235,7 @@ def tutorial():
                 clear()
                 
                 chance = random.randint(1, 3)
-                ganhoDinheiro = random.randint(1, 8)
+                ganhoMoeda = random.randint(1, 8)
                 ganhoXP = random.randint(1, 4)
                 
                 if personagem['Atributos']['Sorte'] >= chance:
@@ -238,10 +243,10 @@ def tutorial():
                     print(f"{monstros['monstroInicial']['Nome']} está com {monstros['monstroInicial']['Vida']} de vida.")
                     
                     if personagem['Atributos']['Vida'] <= 0 or monstros['monstroInicial']['Vida'] <= 0:
-                        personagem['Atributos']['Dinheiro'] += ganhoDinheiro
+                        personagem['Atributos']['Moeda'] += ganhoMoeda
                         personagem['Atributos']['XP'] += ganhoXP
                         
-                        print(f"Você derrotou o {monstros['monstroInicial']['Nome']}! \nRecompensas: \n💰ﾠR$: {ganhoDinheiro} \n✨ﾠXP: {ganhoXP}")
+                        print(f"Você derrotou o {monstros['monstroInicial']['Nome']}! \nRecompensas: \n💰ﾠR$: {ganhoMoeda} \n✨ﾠXP: {ganhoXP}")
                         break
                     else:
                         print(f"Agora é o turno de {monstros['monstroInicial']['Nome']}.")
@@ -265,7 +270,7 @@ def tutorial():
             case 2:
                 clear()
                 chance = random.randint(1, 3)
-                ganhoDinheiro = random.randint(1, 10)
+                ganhoMoeda = random.randint(1, 10)
                 ganhoXP = random.randint(1, 5)
                 
                 print(personagem['Mochila'])
@@ -287,67 +292,138 @@ def tutorial():
                             print(f"{monstros['monstroInicial']['Nome']} errou o ataque.")
                 else:
                     print("Item não encontrado")
-    print(f"\nObrigado por salvar nossas vidas, pegue esse dinheiro como recompensa")
-    personagem['Atributos']['Dinheiro'] += ganhoDinheiro + 2
-    print(f"💰ﾠR$: {personagem['Atributos']['Dinheiro']}")
+                    print(f"\nObrigado por salvar nossas vidas, pegue esse Moeda como recompensa")
+                    personagem['Atributos']['Moeda'] += ganhoMoeda + 2
+                    print(f"💰ﾠR$: {personagem['Atributos']['Moeda']}")
+                    time.sleep(5) 
+                    exploracao()
+    
+def caverna():
+    global personagem
+    clear()
+    
+    print("Caverna foda")
+    inimigo = random.choice(list(monstros.keys()))
+    print(f"Você encontrou um {monstros[inimigo]['Nome']}!")
     time.sleep(5) 
-    exploracao()
+    exploracao()  
+    
+def mercador():
+    global personagem
+    clear()
+    
+    while True:
+        print("Bem vindo ao mercado!")
+        print("Oque gostaria de comprar?")
+        opcao = int(input("1- Poção de cura \n2-Poção de mana \n3- Poção de sorte \n4- Sair: "))
+        
+        match opcao:
+            case 1:
+                print()
+            case 2:
+                print()
+            case 3:
+                print()
+            case 4:
+                vila()
+            case _:
+                print("Opção Inválida!")
+                time.sleep(1)
+                clear()   
+
+def motel():
+    global personagem
+    clear()
+    
+    print("Bem vindo ao motel!")
+    print("Gostaria de passar uma noite?")
+    print("Uma noite custa R$ 10 moeda")
+    opcao = int(input("1- Sim \n2- Sair \n3- Opção: "))
+    
+    match opcao:
+        case 1:
+            if personagem['Atributos']['Moeda'] < 10:
+                clear()
+                print("Voce não tem moeda suficiente")
+                print("Caia fora do meu motel!")
+                time.sleep(3)
+                vila()
+            else:
+                clear()
+                personagem['Atributos']['Moeda'] -= 10 
+                personagem['Atributos']['Vida'] + 200
+                print(f"Vc ainda tem R$: {personagem['Atributos']['Moeda']}")
+                print(f"Sua vida esta recuperada {personagem['Atributos']['Vida']}")
+                time.sleep(5)
+        case 2:
+            vila()
+        case _:
+            print("Opção Inválida!")
+            time.sleep(1)
+            motel()
+
+def vila():
+    clear()
+    print("Você chegou a vila")
+    print("Voce pode visitar lugares pra recuperar vida e mercadores pra comprar poções")
+    opcao = int(input("1- Motel \n2- Mercador \n3- Opção: "))
+    
+    match opcao:
+        case 1:
+            motel()
+        case 2:
+            mercador()
+        case _:
+            print("Opção Inválida!")
+            time.sleep(1)
+            vila()
 
 def exploracao():
-    clear()
+    global personagem
+    
     while True:
-        caminho = random.randint(1, 25)       
+        clear()
+        caminho = random.randint(1, 25)
         if caminho <= 13:
-            clear()
+            
             print("Qual caminho devo seguir: ")
             opcao = int(input("1- Seguir estrada \nOpção: "))
             match opcao:
                 case 1:
-                    continue
+                    pass  
                 case _:
                     print("Opção Inválida!")
-                    time.sleep(1) 
-                    clear()
-                    continue
+                    time.sleep(1)
+                    
         elif caminho >= 14 and caminho < 17:
-            clear()
+            
             print("Qual caminho devo seguir: ")
             opcao = int(input("1- Seguir estrada \n2- Seguir caverna \nOpção: "))
             match opcao:
                 case 1:
-                    continue
+                    pass  
                 case 2:
-                    caverna()
+                    caverna()  
                 case _:
                     print("Opção Inválida!")
-                    time.sleep(1) 
-                    clear()
-                    continue
+                    time.sleep(1)
+                    
         elif caminho >= 17 and caminho < 22:
-            clear()
+            
             print("Qual caminho devo seguir: ")
             opcao = int(input("1- Seguir estrada \n2- Seguir vila \nOpção: "))
             match opcao:
                 case 1:
-                    continue
+                    pass
                 case 2:
-                    vila()
+                    vila() 
                 case _:
                     print("Opção Inválida!")
-                    time.sleep(1) 
-                    clear()
-                    continue
+                    time.sleep(1)
+                    
         elif caminho >= 23:
             print("Você encontrou um item no chão!")
-            time.sleep(5) 
-            clear()
-        continue
-
-def vila():
-    print()
-    
-def caverna():
-    inimigo = random.choice(list(monstros.keys()))
-    print(f"Você encontrou um {monstros[inimigo]['Nome']}!")
-    
+            time.sleep(5)
+            
+            
 print(iniciarJogo())
