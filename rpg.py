@@ -61,16 +61,16 @@ monstros = {
         "Vida": 50,
         "VidaInicial": 50,
         "Dano": 12,
-        "Sorte": 1,
+        "Sorte": 2,
     },
-    "Lobo Fantasma": {
-        "Nome": "🐺ﾠLobo Fantasma",
+    "LoboﾠFantasma": {
+        "Nome": "🐺ﾠLoboﾠFantasma",
         "Vida": 30,
         "VidaInicial": 30,
         "Dano": 6,
         "Sorte": 2,
     },
-    "Pessoa desconhecida": {
+    "Pessoaﾠdesconhecida": {
         "Nome": "Estranho",
         "Vida": 25,
         "VidaInicial": 25,
