@@ -184,7 +184,7 @@ monstros = {
         "Vida": 25,
         "VidaInicial": 25,
         "Dano": 7,
-        "Sorte": 10,
+        "Sorte": 7,
     }
 }
 
@@ -851,7 +851,7 @@ def caverna():
     inimigo = random.choice(list(monstros.keys()))
     print(f"Você encontrou um {monstros[inimigo]['Nome']}!")
     time.sleep(2)
-    #batalha()
+    batalha()
     time.sleep(2)
     print(f"Parabéns, {personagem['Nome']} você derrotou todos os monstros da Caverna!!! ")
     
@@ -875,14 +875,25 @@ def cavernaMed():
     print(f"{personagem['Nome']} entra na caverna e percebe que não estava tão inabitada quanto parecia...")
     inimigo = random.choice(list(monstros.keys()))
     print(f"Você encontrou um {monstros[inimigo]['Nome']}!")
+
     time.sleep(2)
+
     batalha()
+
     time.sleep(2)
+
     print(f"Após derrotar o monstro {personagem['Nome']} continua a")
     print("caminhar mais afundo na caverna....")
-    #time.sleep(2)
+
+    time.sleep(2)
+
+    print(f"Você encontrou um {monstros[inimigo]['Nome']}!")
+
+    time.sleep(2)
+
     batalha()
-    #time.sleep(2)
+
+    time.sleep(2)
     print(f"Parabéns, {personagem['Nome']} você derrotou todos os monstros da Caverna!!! ")
     time.sleep(5)
     
