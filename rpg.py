@@ -6,8 +6,6 @@ personagem = {}
 inimigo = {}
 conseguencia = False
 
-
-
 Armas_Gue = {
     "Berserk": {
         "Classe": "Espadas Grandes",
@@ -175,8 +173,8 @@ monstros = {
     "LoboﾠFantasma": {
         "Classe": "Fantasma",
         "Nome": "🐺ﾠLoboﾠFantasma",
-        "Vida": 30,
-        "VidaInicial": 30,
+        "Vida": 20,
+        "VidaInicial": 20,
         "Dano": 6,
         "Sorte": 2,
     },
@@ -191,13 +189,14 @@ monstros = {
 }
 
 def itens():
+    clear()
     global personagem
     print("Após derrotar todos os monstros da caverna você")
     
-    if personagem["Identificador"] == "Guerreio":
+    if personagem["Identificador"] == "Guerreiro":
         armasRandom = random.choice(list(Armas_Gue.keys()))
+        print(f"Sua arma atual: {personagem['Mochila']['Armas_Gue']}\n")
         print(f"{personagem['Nome']} encontrou uma {Armas_Gue[armasRandom]['Classe']} \nNome: {Armas_Gue[armasRandom]['Nome']} \nDano: {Armas_Gue[armasRandom]['Dano']}")
-        
         opcao = int(input("Você deseja coletar o item? \n1- Coletar \n2- Não Pegar \nOpção: "))
 
         match opcao:
@@ -213,6 +212,7 @@ def itens():
     
     elif personagem["Identificador"] == "Mago":
         armasRandom = random.choice(list(Armas_Mago.keys()))
+        print(f"Sua arma atual: {personagem['Mochila']['Armas_Mago']}\n")
         print(f"{personagem['Nome']} encontrou uma {Armas_Mago[armasRandom]['Classe']} \nNome: {Armas_Mago[armasRandom]['Nome']} \nDano: {Armas_Mago[armasRandom]['Dano']}")
         
         opcao = int(input("Você deseja coletar o item? \n1- Coletar \n2- Não Pegar \nOpção: "))
@@ -230,6 +230,7 @@ def itens():
 
     elif personagem["Identificador"] == "Arqueiro":
         armasRandom = random.choice(list(Armas_Arq.keys()))
+        print(f"Sua arma atual: {personagem['Mochila']['Armas_Arq']}\n")
         print(f"{personagem['Nome']} encontrou uma {Armas_Arq[armasRandom]['Classe']} \nNome: {Armas_Arq[armasRandom]['Nome']} \nDano: {Armas_Arq[armasRandom]['Dano']}")
         
         opcao = int(input("Você deseja coletar o item? \n1- Coletar \n2- Não Pegar \nOpção: "))
@@ -414,9 +415,10 @@ def recompensa():
     personagem['Moeda'] += ganhoMoeda
     personagem['XP'] += ganhoXP
     
+    monstros[inimigo]['Vida'] = monstros[inimigo]['VidaInicial']
     
-    print(f"Você derrotou \nRecompensas: \n💰ﾠR$: {ganhoMoeda} \n✨ﾠXP: {ganhoXP} \n☠ﾠﾠKills: {personagem['Kills']}")
-    
+    print(f"Você derrotou \nRecompensas: \n💰ﾠR$: {ganhoMoeda} \n✨ﾠXP: {ganhoXP} \n☠️ﾠﾠKills: {personagem['Kills']}")
+      
 def iniciarJogo():
     clear()
     
@@ -477,6 +479,7 @@ def novoJogo():
                 "Nome": nome,
                 "Idade": idade,
                 "Classe": "⚔ﾠﾠGuerreiro",
+                "Identificador": "Guerreiro",
                 "Kills": 0,
                 "CavernaExplorada": 0,
                 "Estamina": 60,
@@ -486,8 +489,8 @@ def novoJogo():
                 "EstaminaInicial": 60,
                 "Atributos": {
                     "Vida": 120,
-                    "Dano": 4,
-                    "Sorte": 3,
+                    "Dano": 6,
+                    "Sorte": 4,
                 },
                 "Mochila": {
                     'Armas_Gue': {
@@ -515,6 +518,7 @@ def novoJogo():
                 "Nome": nome,
                 "Idade": idade,
                 "Classe": "🧙ﾠMago",
+                "Identificador": "Mago",
                 "Kills": 0,
                 "CavernaExplorada": 0,
                 "Estamina": 40,
@@ -528,6 +532,9 @@ def novoJogo():
                     "Sorte": 5,
                 },
                 "Mochila": {
+                    "Armas_Mago": {
+                        
+                    },
                     "Cura": {
                         "Quantidade": 2,
                         "Porcentagem": 25,
@@ -551,6 +558,7 @@ def novoJogo():
                 "Nome": nome,
                 "Idade": idade,
                 "Classe": "🏹ﾠArqueiro",
+                "Identificador": "Arqueiro",
                 "Kills": 0,
                 "CavernaExplorada": 0,
                 "Estamina": 50,
@@ -563,7 +571,9 @@ def novoJogo():
                     "Dano": 8,
                     "Sorte": 7,
                 },
-                "Mochila": {
+                "Mochila": {           
+                    'Armas_Arq': {
+                    },
                   "Cura": {
                         "Quantidade": 3,
                         "Porcentagem": 25,
@@ -841,13 +851,13 @@ def caverna():
     inimigo = random.choice(list(monstros.keys()))
     print(f"Você encontrou um {monstros[inimigo]['Nome']}!")
     time.sleep(2)
-    batalha()
+    #batalha()
     time.sleep(2)
     print(f"Parabéns, {personagem['Nome']} você derrotou todos os monstros da Caverna!!! ")
     
     
     personagem['CavernaExplorada']  =+ 1
-    if chance >= 8:
+    if chance >= 1:
         itens()
     else:
         pass
@@ -1077,7 +1087,5 @@ def mercador():
                 print("Opção Inválida!")
                 time.sleep(1)
                 clear()   
-
-
 
 print(iniciarJogo())
