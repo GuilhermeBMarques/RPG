@@ -6,7 +6,9 @@ personagem = {}
 inimigo = {}
 conseguencia = False
 
-WeaponsGue = {
+
+
+Armas_Gue = {
     "Berserk": {
         "Classe": "Espadas Grandes",
         "Nome": "Berserk Sword",
@@ -39,9 +41,75 @@ WeaponsGue = {
     }
 }
 
+Armas_Mago = {
+    "Cajado Comum": {
+        "Classe": "Cajado",
+        "Nome": "Cajado Magico",
+        "Dano": 4,
+    },
+    "Cajado raro": {
+        "Classe": "Cajado raro",
+        "Nome": "Cajado de Fogo",
+        "Dano": 6,
+    },
+    "Cajado épico": {
+        "Classe": "Cajado épico",
+        "Nome": "Cajado Pedrilhante",
+        "Dano": 26,
+    },
+    "Cajado Comum2": {
+        "Classe": "Cajado",
+        "Nome": "Cajado brilhante",
+        "Dano": 3,
+    },
+    "Cajado raro2": {
+        "Classe": "Cajado raro",
+        "Nome": "Cajado de Gelo",
+        "Dano": 6,
+    },
+    "Cajado épico2": {
+        "Classe": "Cajado épico",
+        "Nome": "Cajado lunar",
+        "dano": 33,
+    },
+}
+
+Armas_Arq = {
+    "Arco basico": {
+        "Classe": "Arco comum",
+        "Nome": "Arco basico",
+        "Dano": 3,
+    },
+    "Crossbow": {
+        "Classe": "Crossbow",
+        "Nome": "Crossbow",
+        "Dano": 6,
+    },
+    "Crossbow Automatica": {
+        "Classe": "Crossbow",
+        "Nome": "Crossbow Automatica",
+        "Dano": 12,
+    },
+    "Arco basico": {
+        "Classe": "Arco comum",
+        "Nome": "Arco de Madeira",
+        "Dano": 4,
+    },
+    "Arco épico": {
+        "Classe": "Arco épico",
+        "Nome": "Artemis",
+        "Dano": 23,
+    },
+    "Arco épico": {
+        "Classe": "Arco épico",
+        "Nome": "Arco lunar",
+        "Dano": 33,
+    },
+}
+
 monstros = {
     "Goblin": {
-        "Classe": "Globin",
+        "Classe": "Goblin",
         "Nome": "🧌ﾠﾠGoblin",
         "Vida": 15,
         "VidaInicial": 15,
@@ -50,7 +118,7 @@ monstros = {
     },
     "Esqueleto": {
         "Classe": "Esqueleto",
-        "Nome": "💀ﾠEsquelo",
+        "Nome": "💀ﾠEsqueleto",
         "Vida": 15,
         "VidaInicial": 15,
         "Dano": 8,
@@ -82,7 +150,7 @@ monstros = {
     },
     "ArmaduraﾠViva": {
         "Classe": "Fantasma",
-        "Nome": "🛡️ﾠﾠArmaduraﾠViva",
+        "Nome": "🛡ﾠﾠArmaduraﾠViva",
         "Vida": 40,
         "VidaInicial": 40,
         "Dano": 16,
@@ -124,23 +192,59 @@ monstros = {
 
 def itens():
     global personagem
-    armasRandom = random.choice(list(WeaponsGue.keys()))
     print("Após derrotar todos os monstros da caverna você")
-    print(f"{personagem['Nome']} encontrou uma {WeaponsGue[armasRandom]['Classe']} \nNome: {WeaponsGue[armasRandom]['Nome']} \nDano: {WeaponsGue[armasRandom]['Dano']}")
     
-    opcao = int(input("Você deseja coletar o item? \n1- Coletar \n2- Não Pegar \nOpção: "))
+    if personagem["Identificador"] == "Guerreio":
+        armasRandom = random.choice(list(Armas_Gue.keys()))
+        print(f"{personagem['Nome']} encontrou uma {Armas_Gue[armasRandom]['Classe']} \nNome: {Armas_Gue[armasRandom]['Nome']} \nDano: {Armas_Gue[armasRandom]['Dano']}")
+        
+        opcao = int(input("Você deseja coletar o item? \n1- Coletar \n2- Não Pegar \nOpção: "))
 
-    match opcao:
-        case 1:
-            personagem['Mochila']['WeaponsGue'] = {armasRandom: WeaponsGue[armasRandom]}
-            print(f"{personagem['Nome']} pegou a {WeaponsGue[armasRandom]} e colocou na mochila.")
-        case 2:
-            print("Você deixou o item no chão, talvez algum outro aventureiro faça um melhor uso...")
-        case _:
-            print("Opção Inválida!")
-            time.sleep(1)
-            itens()
+        match opcao:
+            case 1:
+                personagem['Mochila']['Armas_Gue'] = {armasRandom: Armas_Gue[armasRandom]}
+                print(f"{personagem['Nome']} pegou a {Armas_Gue[armasRandom]} e colocou na mochila.")
+            case 2:
+                print("Você deixou o item no chão, talvez algum outro aventureiro faça um melhor uso...")
+            case _:
+                print("Opção Inválida!")
+                time.sleep(1)
+                itens()
     
+    elif personagem["Identificador"] == "Mago":
+        armasRandom = random.choice(list(Armas_Mago.keys()))
+        print(f"{personagem['Nome']} encontrou uma {Armas_Mago[armasRandom]['Classe']} \nNome: {Armas_Mago[armasRandom]['Nome']} \nDano: {Armas_Mago[armasRandom]['Dano']}")
+        
+        opcao = int(input("Você deseja coletar o item? \n1- Coletar \n2- Não Pegar \nOpção: "))
+
+        match opcao:
+            case 1:
+                personagem['Mochila']['Armas_Mago'] = {armasRandom: Armas_Mago[armasRandom]}
+                print(f"{personagem['Nome']} pegou a {Armas_Mago[armasRandom]} e colocou na mochila.")
+            case 2:
+                print("Você deixou o item no chão, talvez algum outro aventureiro faça um melhor uso...")
+            case _:
+                print("Opção Inválida!")
+                time.sleep(1)
+                itens()
+
+    elif personagem["Identificador"] == "Arqueiro":
+        armasRandom = random.choice(list(Armas_Arq.keys()))
+        print(f"{personagem['Nome']} encontrou uma {Armas_Arq[armasRandom]['Classe']} \nNome: {Armas_Arq[armasRandom]['Nome']} \nDano: {Armas_Arq[armasRandom]['Dano']}")
+        
+        opcao = int(input("Você deseja coletar o item? \n1- Coletar \n2- Não Pegar \nOpção: "))
+
+        match opcao:
+            case 1:
+                personagem['Mochila']['Armas_Arq'] = {armasRandom: Armas_Arq[armasRandom]}
+                print(f"{personagem['Nome']} pegou a {Armas_Arq[armasRandom]} e colocou na mochila.")
+            case 2:
+                print("Você deixou o item no chão, talvez algum outro aventureiro faça um melhor uso...")
+            case _:
+                print("Opção Inválida!")
+                time.sleep(1)
+                itens()
+
 def clear():
     if os.name == 'nt': 
         os.system('cls')
@@ -149,7 +253,8 @@ def clear():
         
 def batalha():
     global personagem
-    
+    global monstros
+
     while personagem['Atributos']['Vida'] > 0 and monstros[inimigo]['Vida'] > 0:
         opcao = int(input("Deseja: \n1- Atacar \n2- Usar Mochila \n3- Fugir \nOpção: "))
         
@@ -161,8 +266,8 @@ def batalha():
                 
                 if personagem['Atributos']['Sorte'] >= chance:
                     monstros[inimigo]['Vida'] -= personagem['Atributos']["Dano"]
-                    print(f"{monstros[inimigo]['Classe']} está com {monstros[inimigo]['Vida']} de vida")
-                    print(f"{monstros[inimigo]['Nome']} \n❤️ﾠﾠVida: {monstros[inimigo]['Vida']} \n⚔️ﾠﾠDano: {monstros[inimigo]['Dano']}\n")
+                    print(f"Você deu -{personagem['Atributos']['Dano']} de dano")
+                    print(f"{monstros[inimigo]['Nome']} \n❤ﾠﾠVida: {monstros[inimigo]['Vida']} \n⚔ﾠﾠDano: {monstros[inimigo]['Dano']}\n")
                     
                     if monstros[inimigo]['Vida'] <= 0:
                         recompensa()
@@ -172,8 +277,8 @@ def batalha():
                         
                         if monstros[inimigo]['Sorte'] >= chance:
                             personagem['Atributos']['Vida'] -= monstros[inimigo]['Dano']
-                            print(f"Você está com {personagem['Atributos']['Vida']} de vida")
-                            print(f"{personagem['Classe']} \n❤️ﾠﾠ{personagem['Atributos']['Vida']} \n⚔️ﾠﾠDano: {personagem['Atributos']['Dano']}\n")
+                            print(f"{monstros[inimigo]['Classe']} deu -{monstros[inimigo]['Dano']} de dano")
+                            print(f"{personagem['Classe']} \n❤ﾠﾠ{personagem['Atributos']['Vida']} \n⚔ﾠﾠDano: {personagem['Atributos']['Dano']}\n")
                             
                             if personagem['Atributos']['Vida'] <= 0:
                                 playerMorto()
@@ -182,14 +287,14 @@ def batalha():
                             print(f"{monstros[inimigo]['Classe']} errou o ataque\n")
                 else:
                     chance = random.randint(1, 10)
-                    print("Você errou o ataque")
+                    print("Você errou o ataque")\
                     
                     print(f"\nTurno de {monstros[inimigo]['Classe']}")
                         
                     if monstros[inimigo]['Sorte'] >= chance:
                         personagem['Atributos']['Vida'] -= monstros[inimigo]['Dano']
-                        print(f"Você está com {personagem['Atributos']['Vida']} de vida")
-                        print(f"{personagem['Classe']} \n❤️ﾠﾠ{personagem['Atributos']['Vida']} \n⚔️ﾠﾠDano: {personagem['Atributos']['Dano']} \n")
+                        print(f"{monstros[inimigo]['Classe']} deu - {monstros[inimigo]['Dano']} de dano")
+                        print(f"{personagem['Classe']} \n❤ﾠﾠ{personagem['Atributos']['Vida']} \n⚔ﾠﾠDano: {personagem['Atributos']['Dano']} \n")
                         
                         if personagem['Atributos']['Vida'] <= 0:
                             playerMorto()
@@ -280,7 +385,8 @@ def playerMorto():
     
     print("Voce morreu!")
     print(f"Inimigos Mortos: {personagem['Kills']}")
-    time.sleep(1)
+    print(f"Você completou: {personagem['CavernaExplorada']} cavernas. ")
+    time.sleep(3)
     print("Deseja reniciar?")
     opcao = int(input("1- Sim \n2- Não \nOpção: "))
     match opcao:
@@ -307,9 +413,9 @@ def recompensa():
     personagem['Kills'] += 1
     personagem['Moeda'] += ganhoMoeda
     personagem['XP'] += ganhoXP
-    monstros[inimigo]['Vida'] == monstros[inimigo]['VidaInicial']
     
-    print(f"Você derrotou \nRecompensas: \n💰ﾠR$: {ganhoMoeda} \n✨ﾠXP: {ganhoXP} \n☠️ﾠﾠKills: {personagem['Kills']}")
+    
+    print(f"Você derrotou \nRecompensas: \n💰ﾠR$: {ganhoMoeda} \n✨ﾠXP: {ganhoXP} \n☠ﾠﾠKills: {personagem['Kills']}")
     
 def iniciarJogo():
     clear()
@@ -362,7 +468,7 @@ def novoJogo():
     
     print("\nEscolha uma \033[1mclasse\033[0m:")
     
-    opcao = int(input("1- ⚔️ﾠﾠGuerreiro \n2- 🧙ﾠMago \n3- 🏹ﾠArqueiro \n4- Voltar \nOpção: "))
+    opcao = int(input("1- ⚔ﾠﾠGuerreiro \n2- 🧙ﾠMago \n3- 🏹ﾠArqueiro \n4- Voltar \nOpção: "))
     
     match opcao:
         case 1: 
@@ -370,7 +476,7 @@ def novoJogo():
             personagem = {
                 "Nome": nome,
                 "Idade": idade,
-                "Classe": "⚔️ﾠﾠGuerreiro",
+                "Classe": "⚔ﾠﾠGuerreiro",
                 "Kills": 0,
                 "CavernaExplorada": 0,
                 "Estamina": 60,
@@ -384,7 +490,7 @@ def novoJogo():
                     "Sorte": 3,
                 },
                 "Mochila": {
-                    'WeaponsGue': {
+                    'Armas_Gue': {
                     },
                     "Cura": {
                         "Quantidade": 3,
@@ -549,6 +655,8 @@ def exploracao():
     global personagem
     global monstros
     global inimigo
+    mudarValor = True
+    caminhoSalvo = 0
 
     while True:
         # Se não estiver mais estamina volta pra vila
@@ -559,32 +667,40 @@ def exploracao():
             vila()
         else:
             clear()
-            caminho = random.randint(1, 30)
-            
+            if mudarValor:
+                caminho = random.randint(1, 30)
+            else:
+                caminho = caminhoSalvo
+                mudarValor = True
+
         # Caminho só de estrada
         if caminho <= 15:
-            personagem["Estamina"] -= 2
             print("Qual caminho devo seguir: ")
             opcao = int(input("1- Seguir estrada \nOpção: "))   
             match opcao:
                 case 1:
-                    pass  
+                    personagem["Estamina"] -= 2
+                    pass
                 case _:
                     print("Opção Inválida!")
+                    caminhoSalvo = caminho
+                    mudarValor = False
                     time.sleep(1)
-        
+
         # Caminho de estrada e vila
         elif caminho > 15 and caminho <= 20:
-            personagem["Estamina"] -= 2
             print("Qual caminho devo seguir: ")
             opcao = int(input("1- Seguir estrada \n2- Vila \nOpção: "))   
             match opcao:
                 case 1:
+                    personagem["Estamina"] -= 2
                     pass  
                 case 2:
                     vila()
                 case _:
                     print("Opção Inválida!")
+                    caminhoSalvo = caminho
+                    mudarValor = False
                     time.sleep(1)
         
         # Caminho de estrada e caverna pequena, media e grande
@@ -592,43 +708,52 @@ def exploracao():
             chancecaverna = random.randint(1, 25)
             
             if chancecaverna <= 13:
-                personagem["Estamina"] -= 2
                 
                 print("Qual caminho devo seguir: ")
                 opcao = int(input("1- Seguir estrada \n2- Seguir caverna \nOpção: "))
                 match opcao:
                     case 1:
+                        personagem["Estamina"] -= 2
                         pass 
                     case 2:
+                        personagem["Estamina"] -= 2
                         caverna()
                     case _:
                         print("Opção Inválida!")
+                        caminhoSalvo = caminho
+                        mudarValor = False
                         time.sleep(1)
-                        
+                            
             elif chancecaverna >= 21 and chancecaverna < 25:
-                personagem["Estamina"] -= 2
                 print("Qual caminho devo seguir: ")
                 opcao = int(input("1- Seguir estrada \n2- Seguir caverna media \nOpção: "))
                 match opcao:
                     case 1:
+                        personagem["Estamina"] -= 2
                         pass 
                     case 2:
+                        personagem["Estamina"] -= 2
                         cavernaMed()
                     case _:
                         print("Opção Inválida!")
+                        caminhoSalvo = caminho
+                        mudarValor = False
                         time.sleep(1)
                         
             elif personagem["Kills"] == 25:
-                personagem["Estamina"] -= 2
                 print("Qual caminho devo seguir: ")
                 opcao = int(input("1- Seguir estrada \n2- Seguir Caverna Final \nOpção: "))
                 match opcao:
                     case 1:
+                        personagem["Estamina"] -= 2
                         pass 
                     case 2:
+                        personagem["Estamina"] -= 2
                         cavernaGrande()
                     case _:
                         print("Opção Inválida!")
+                        caminhoSalvo = caminho
+                        mudarValor = False
                         time.sleep(1)
             elif caminho >= 24:
                 personagem["Estamina"] -= 2
@@ -651,7 +776,7 @@ def exploracao():
                 time.sleep(1)
                 personagem["Moeda"] += chanceMoeda
                 
-                print("Intens encontrados:")
+                print("Itens encontrados:")
                 print(f"Moeda: {chanceMoeda}")
                 time.sleep(2)
             elif chance == 2:
@@ -660,7 +785,7 @@ def exploracao():
                 time.sleep(1)
                 personagem["Moeda"] += chanceMoeda
                 
-                print("Intens encontrados:")
+                print("Itens encontrados:")
                 print(f"Moeda: {chanceMoeda}")
                 time.sleep(2)
             elif chance == 3:
@@ -669,7 +794,7 @@ def exploracao():
                 time.sleep(1)
                 personagem["Moeda"] += chanceMoeda
                 
-                print("Intens encontrados:")
+                print("Itens encontrados:")
                 print(f"Moeda: {chanceMoeda}")
                 time.sleep(2)
             elif chance == 4:
@@ -678,7 +803,7 @@ def exploracao():
                 time.sleep(1)
                 personagem["Moeda"] += chanceMoeda
                 
-                print("Intens encontrados:")
+                print("Itens encontrados:")
                 print(f"Moeda: {chanceMoeda}")
                 time.sleep(2)
             elif chance == 5:
@@ -687,7 +812,7 @@ def exploracao():
                 time.sleep(1)
                 personagem["Moeda"] += chanceMoeda
                 
-                print("Intens encontrados:")
+                print("Itens encontrados:")
                 print(f"Moeda: {chanceMoeda}")
                 time.sleep(2)
         
@@ -699,7 +824,8 @@ def exploracao():
             print("Você encontrou uma sacola no chão!")
             print("👜ﾠVasculhando..")
             time.sleep(1)
-    
+           
+            print("Itens encontrados:")
             print(f"Moeda: {bolsa}")
             
             time.sleep(2)
@@ -737,15 +863,16 @@ def cavernaMed():
     print("acaba encontrando uma caverna misteriosa, que lhe chamou muita a atenção")
     time.sleep(2)
     print(f"{personagem['Nome']} entra na caverna e percebe que não estava tão inabitada quanto parecia...")
+    inimigo = random.choice(list(monstros.keys()))
     print(f"Você encontrou um {monstros[inimigo]['Nome']}!")
     time.sleep(2)
     batalha()
     time.sleep(2)
     print(f"Após derrotar o monstro {personagem['Nome']} continua a")
     print("caminhar mais afundo na caverna....")
-    time.sleep(2)
+    #time.sleep(2)
     batalha()
-    time.sleep(2)
+    #time.sleep(2)
     print(f"Parabéns, {personagem['Nome']} você derrotou todos os monstros da Caverna!!! ")
     time.sleep(5)
     
@@ -873,7 +1000,10 @@ def motel():
     print("Bem vindo ao motel!")
     print("Gostaria de passar uma noite?")
     print("Uma noite custa R$ 10 moeda")
+    print(f"Suas moedas: {personagem['Moeda']}")
     opcao = int(input("1- Sim \n2- Sair \n3- Opção: "))
+
+
     
     match opcao:
         case 1:
@@ -907,6 +1037,7 @@ def mercador():
     while True:
         print("Bem vindo ao mercado!")
         print("Oque gostaria de comprar?")
+        print(f"Suas moedas: {personagem['Moeda']}")
         opcao = int(input("1- R$: 25 Poção de cura \n2- Poção de Dano R$: 50 \n3- R$: 75 Poção de sorte \n4- Sair \nOpção: "))
         
         match opcao:
@@ -946,5 +1077,7 @@ def mercador():
                 print("Opção Inválida!")
                 time.sleep(1)
                 clear()   
-    
+
+
+
 print(iniciarJogo())
