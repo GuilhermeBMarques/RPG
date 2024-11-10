@@ -931,9 +931,9 @@ def cavernaGrande():
     print("Dela emanava uma forte aura maligna e estranhamente familiar....")
     print("Você entrou na caverna final.....")
     print("")
-    inimigo = random.choice(list(monstros.keys()))
+    inimigo = 'MoonGuard'
     print("Você agora esta nos dominios do Lorde Lunar...")
-    print(f"Você encontrou o Boss {monstros[inimigo]}['Nome']")
+    print(f"Você encontrou o Boss {monstros[inimigo]['Nome']}")
     print("Prepare-se para MORRER!!!!!")
     batalha()
     time.sleep(1)
