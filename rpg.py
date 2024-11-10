@@ -185,7 +185,15 @@ monstros = {
         "VidaInicial": 25,
         "Dano": 7,
         "Sorte": 7,
-    }
+    },
+    "MoonGuard": {
+        "Classe": "Boss",
+        "Nome": "Moonlord",
+        "Vida": 200,
+        "VidaInicial": 200,
+        "Dano": 20,
+        "Sorte": 8,
+    },
 }
 
 def itens():
@@ -858,7 +866,7 @@ def cavernaPequena():
     
     print(f"Durante sua jornada {personagem['Nome']} encontra uma pequena caverna e decide que")
     print("é um bom lugar para treinar derrotando monstros...")
-    inimigo = random.choice(list(monstros.keys()))
+    inimigo = random.choice([m for m in monstros.keys() if m != "Lorde Lunar"])
     print(f"Você encontrou um {monstros[inimigo]['Nome']}!")
     time.sleep(1)
     batalha()
@@ -883,7 +891,7 @@ def cavernaMed():
     print("acaba encontrando uma caverna, que lhe chamou muita a atenção")
     time.sleep(1)
     print(f"{personagem['Nome']} entra na caverna e percebe que não estava tão inabitada quanto parecia...")
-    inimigo = random.choice(list(monstros.keys()))
+    inimigo = random.choice([m for m in monstros.keys() if m != "Lorde Lunar"])
     print(f"Você encontrou um {monstros[inimigo]['Nome']}!")
 
     time.sleep(1)
@@ -918,17 +926,6 @@ def cavernaGrande():
     global monstros
     global inimigo
 
-    inimigo  = {
-    "MoonGuard": {
-        "Classe": "Boss",
-        "Nome": "Moonlord",
-        "Vida": 200,
-        "VidaInicial": 200,
-        "Dano": 20,
-        "Sorte": 8,
-    },
-} 
-    
     clear()
     print("Você encontrou uma caverna misteriosa durante sua caminhada")
     print("Dela emanava uma forte aura maligna e estranhamente familiar....")
