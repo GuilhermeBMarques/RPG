@@ -6,7 +6,7 @@ personagem = {}
 inimigo = {}
 conseguencia = False
 
-Armas_Gue = {
+ArmasGuerreiro = {
     "Berserk": {
         "Classe": "Espadas Grandes",
         "Nome": "Berserk Sword",
@@ -39,7 +39,7 @@ Armas_Gue = {
     }
 }
 
-Armas_Mago = {
+ArmasMago = {
     "Cajado Comum": {
         "Classe": "Cajado",
         "Nome": "Cajado Magico",
@@ -72,7 +72,7 @@ Armas_Mago = {
     },
 }
 
-Armas_Arq = {
+ArmasArqueiro = {
     "Arco basico": {
         "Classe": "Arco comum",
         "Nome": "Arco basico",
@@ -202,15 +202,15 @@ def itens():
     print("Após derrotar todos os monstros da caverna você")
     
     if personagem["Identificador"] == "Guerreiro":
-        armasRandom = random.choice(list(Armas_Gue.keys()))
-        print(f"Sua arma atual: {personagem['Mochila']['Armas_Gue']}\n")
-        print(f"{personagem['Nome']} encontrou uma {Armas_Gue[armasRandom]['Classe']} \nNome: {Armas_Gue[armasRandom]['Nome']} \nDano: {Armas_Gue[armasRandom]['Dano']}")
+        armasRandom = random.choice(list(ArmasGuerreiro.keys()))
+        print(f"Sua arma atual: {personagem['Mochila']['ArmasGuerreiro']}\n")
+        print(f"{personagem['Nome']} encontrou uma {ArmasGuerreiro[armasRandom]['Classe']} \nNome: {ArmasGuerreiro[armasRandom]['Nome']} \nDano: {ArmasGuerreiro[armasRandom]['Dano']}")
         opcao = int(input("Você deseja coletar o item? \n1- Coletar \n2- Não Pegar \nOpção: "))
 
         match opcao:
             case 1:
-                personagem['Mochila']['Armas_Gue'] = {armasRandom: Armas_Gue[armasRandom]}
-                print(f"{personagem['Nome']} pegou a {Armas_Gue[armasRandom]} e colocou na mochila.")
+                personagem['Mochila']['ArmasGuerreiro'] = {armasRandom: ArmasGuerreiro[armasRandom]}
+                print(f"{personagem['Nome']} pegou a {ArmasGuerreiro[armasRandom]} e colocou na mochila.")
             case 2:
                 print("Você deixou o item no chão, talvez algum outro aventureiro faça um melhor uso...")
             case _:
@@ -219,16 +219,16 @@ def itens():
                 itens()
     
     elif personagem["Identificador"] == "Mago":
-        armasRandom = random.choice(list(Armas_Mago.keys()))
-        print(f"Sua arma atual: {personagem['Mochila']['Armas_Mago']}\n")
-        print(f"{personagem['Nome']} encontrou uma {Armas_Mago[armasRandom]['Classe']} \nNome: {Armas_Mago[armasRandom]['Nome']} \nDano: {Armas_Mago[armasRandom]['Dano']}")
+        armasRandom = random.choice(list(ArmasMago.keys()))
+        print(f"Sua arma atual: {personagem['Mochila']['ArmasMago']}\n")
+        print(f"{personagem['Nome']} encontrou uma {ArmasMago[armasRandom]['Classe']} \nNome: {ArmasMago[armasRandom]['Nome']} \nDano: {ArmasMago[armasRandom]['Dano']}")
         
         opcao = int(input("Você deseja coletar o item? \n1- Coletar \n2- Não Pegar \nOpção: "))
 
         match opcao:
             case 1:
-                personagem['Mochila']['Armas_Mago'] = {armasRandom: Armas_Mago[armasRandom]}
-                print(f"{personagem['Nome']} pegou a {Armas_Mago[armasRandom]} e colocou na mochila.")
+                personagem['Mochila']['ArmasMago'] = {armasRandom: ArmasMago[armasRandom]}
+                print(f"{personagem['Nome']} pegou a {ArmasMago[armasRandom]} e colocou na mochila.")
             case 2:
                 print("Você deixou o item no chão, talvez algum outro aventureiro faça um melhor uso...")
             case _:
@@ -237,16 +237,16 @@ def itens():
                 itens()
 
     elif personagem["Identificador"] == "Arqueiro":
-        armasRandom = random.choice(list(Armas_Arq.keys()))
-        print(f"Sua arma atual: {personagem['Mochila']['Armas_Arq']}\n")
-        print(f"{personagem['Nome']} encontrou uma {Armas_Arq[armasRandom]['Classe']} \nNome: {Armas_Arq[armasRandom]['Nome']} \nDano: {Armas_Arq[armasRandom]['Dano']}")
+        armasRandom = random.choice(list(ArmasArqueiro.keys()))
+        print(f"Sua arma atual: {personagem['Mochila']['ArmasArqueiro']}\n")
+        print(f"{personagem['Nome']} encontrou uma {ArmasArqueiro[armasRandom]['Classe']} \nNome: {ArmasArqueiro[armasRandom]['Nome']} \nDano: {ArmasArqueiro[armasRandom]['Dano']}")
         
         opcao = int(input("Você deseja coletar o item? \n1- Coletar \n2- Não Pegar \nOpção: "))
 
         match opcao:
             case 1:
-                personagem['Mochila']['Armas_Arq'] = {armasRandom: Armas_Arq[armasRandom]}
-                print(f"{personagem['Nome']} pegou a {Armas_Arq[armasRandom]} e colocou na mochila.")
+                personagem['Mochila']['ArmasArqueiro'] = {armasRandom: ArmasArqueiro[armasRandom]}
+                print(f"{personagem['Nome']} pegou a {ArmasArqueiro[armasRandom]} e colocou na mochila.")
             case 2:
                 print("Você deixou o item no chão, talvez algum outro aventureiro faça um melhor uso...")
             case _:
@@ -501,7 +501,7 @@ def novoJogo():
                     "Sorte": 4,
                 },
                 "Mochila": {
-                    'Armas_Gue': {
+                    'ArmasGuerreiro': {
                     },
                     "Cura": {
                         "Quantidade": 3,
@@ -540,7 +540,7 @@ def novoJogo():
                     "Sorte": 5,
                 },
                 "Mochila": {
-                    "Armas_Mago": {
+                    "ArmasMago": {
                         
                     },
                     "Cura": {
@@ -580,7 +580,7 @@ def novoJogo():
                     "Sorte": 7,
                 },
                 "Mochila": {           
-                    'Armas_Arq': {
+                    'ArmasArqueiro': {
                     },
                   "Cura": {
                         "Quantidade": 3,
@@ -925,13 +925,12 @@ def cavernaMed():
 def cavernaGrande():
     global monstros
     global inimigo
-
+    
     clear()
     print("Você encontrou uma caverna misteriosa durante sua caminhada")
     print("Dela emanava uma forte aura maligna e estranhamente familiar....")
     print("Você entrou na caverna final.....")
-    print("")
-    inimigo = 'MoonGuard'
+    inimigo = "MoonGuard"
     print("Você agora esta nos dominios do Lorde Lunar...")
     print(f"Você encontrou o Boss {monstros[inimigo]['Nome']}")
     print("Prepare-se para MORRER!!!!!")
