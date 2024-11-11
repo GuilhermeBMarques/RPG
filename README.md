@@ -3,34 +3,6 @@ Este RPG é baseado em escolhas por números. O funcionamento é simples: você 
 
 
 # Explicação do codigo
-## Estruturas
-Estrutura basica para armazenar as classes dos personagens, itens e monstros
-```
-import os
-import time
-import random
-
-personagem = {}
-inimigo = {}
-conseguencia = False
-
-# Armas das classes dos personagens
-ArmasGuerreiro = {
-}
-
-ArmasMago = {
-}
-
-ArmasArqueiro = {
-}
-
-ArmasInvocador = {
-}
-
-# Monstros
-monstros = {
-}
-```
 ## def itens()
 ```
 def itens():
