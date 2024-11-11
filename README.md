@@ -3,7 +3,7 @@ Este RPG é baseado em escolhas por números. O funcionamento é simples: você 
 
 
 # Explicação do codigo
-## def itens()
+### def itens():
 ```
 def itens():
     clear()
