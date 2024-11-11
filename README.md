@@ -4,7 +4,7 @@ Este RPG é baseado em escolhas por números. O funcionamento é simples: você 
 
 # Explicação do codigo
 importações e estruturas do personagem, monstros e armas
-```
+`
 import os
 import time
 import random
@@ -22,7 +22,7 @@ ArmasArqueiro = {}
 ArmasInvocador = {}
 
 monstros = {}
-```
+`
 
 ### def clear():
 Verifica a operação da maquina se é **Windows** ou **Linux** ele limpa a tela
