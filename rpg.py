@@ -437,10 +437,80 @@ def batalha():
                             break
                     else:
                         print(f"{monstros[inimigo]['Classe']} errou o ataque\n")
-            case _:
-                print("Opção inválida.")
+            case 2:
+                clear()
+                chance = random.randint(1, 3)
 
-        
+                print(personagem['Mochila'])
+                
+                print("Digite o nome do item que deseja usar")
+                print("Digite sair caso queira voltar pra batalha")
+                opcao = str(input("Deseja usar algum item? \nOpção: ")).capitalize()
+                clear()
+                if opcao in personagem['Mochila']:
+                    if personagem['Mochila'][opcao]['Quantidade'] == 0:
+                        print("Vc n tem mais esse item")
+                    else:
+                        if personagem['Mochila'][opcao] == personagem['Mochila']['Cura']:
+                            if personagem['Atributos']['Vida'] <= personagem['VidaInicial']:
+                                personagem['Atributos']['Vida'] += personagem['Mochila']['Cura']['Porcentagem']
+                                personagem['Mochila'][opcao]['Quantidade'] -= 1
+                                if personagem['Atributos']['Vida'] > personagem['VidaInicial']:
+                                    personagem['Atributos']['Vida'] = personagem['VidaInicial']
+                                    print(f"Vida: {personagem['Atributos']['Vida']}")
+                                else: 
+                                    print(f"Vida: {personagem['Atributos']['Vida']}")
+                                    
+                        elif personagem['Mochila'][opcao] == personagem['Mochila']['Dano']:
+                            personagem['Atributos']['Dano'] += personagem['Mochila']['Dano']['Porcentagem']
+                            print(f"Voce aumento seu dano para mais: {personagem['Mochila']['Dano']['Porcentagem']}")
+                            print(f"Dano: {personagem['Atributos']['Dano']}")
+                            
+                        elif personagem['Mochila'][opcao] == personagem['Mochila']['Sorte']:
+                            personagem['Atributos']['Sorte'] += personagem['Mochila']['Sorte']['Porcentagem']
+                            print(f"Voce aumento seu sorte para mais: {personagem['Mochila']['Sorte']['Porcentagem']}")
+                            print(f"Sorte: {personagem['Atributos']['Sorte']}")
+                        else:
+                            pass
+                        
+                        if monstros[inimigo]['Sorte'] >= chance:
+                            print(f"Agora é o turno de {monstros[inimigo]['Nome']}")
+                            personagem['Atributos']['Vida'] -= monstros[inimigo]['Dano']
+                            print(f"Você está com {personagem['Atributos']['Vida']} de vida")
+                        else:
+                            print(f"{monstros[inimigo]['Classe']} errou o ataque")
+                elif opcao.capitalize() == "Sair":
+                    clear()
+                    batalha()
+                else:
+                    print("Item não encontrado")
+            case 3:
+                fugir = random.randint(1, 7)
+                if 2 >= fugir:
+                    print("Voce conseguiu fugir da batalha!")
+                    time.sleep(1)
+                    clear()
+                    exploracao()
+                else:
+                    chance = random.randint(1, 10)
+                    print("Você Não conseguiu fugir")
+                    
+                    print(f"\nTurno de {monstros[inimigo]['Classe']}")
+                        
+                    if monstros[inimigo]['Sorte'] >= chance:
+                        personagem['Atributos']['Vida'] -= monstros[inimigo]['Dano']
+                        print(f"Você está com {personagem['Atributos']['Vida']} de vida")
+                        
+                        if personagem['Atributos']['Vida'] <= 0:
+                            playerMorto()
+                            break
+                    else:
+                        print(f"{monstros[inimigo]['Classe']} errou o ataque")
+            case _:
+                print("Opção Inválida!")
+                time.sleep(1)
+                clear()
+      
 def playerMorto():
     global personagem
     global monstros
@@ -449,7 +519,7 @@ def playerMorto():
     clear()
     
     if monstros[inimigo]['Sexo'] == "Masculino":
-        print(f"Voce morreu para um {inimigo['Nome']}!")
+        print(f"Voce morreu para um {monstros[inimigo]['Nome']}!")
         print(f"Inimigos Mortos: {personagem['Kills']}")
         print(f"Você completou: {personagem['CavernaExplorada']} cavernas. ")
         time.sleep(1)
@@ -468,7 +538,7 @@ def playerMorto():
                 clear()
                 playerMorto()
     else:
-        print(f"Voce morreu para uma {inimigo['Nome']}!")
+        print(f"Voce morreu para uma {monstros[inimigo]['Nome']}!")
         print(f"Inimigos Mortos: {personagem['Kills']}")
         print(f"Você completou: {personagem['CavernaExplorada']} cavernas. ")
         time.sleep(1)
@@ -581,15 +651,15 @@ def novoJogo():
                     },
                     "Cura": {
                         "Quantidade": 3,
-                        "Porcentagem": 10,
+                        "Porcentagem": 25,
                     },
                     "Dano": {
                         "Quantidade": 1,
-                        "Porcentagem": 1,
+                        "Porcentagem": 1
                     },
                     "Sorte": {
                         "Quantidade": 0,
-                        "Porcentagem": 1,
+                        "Porcentagem": 1
                     },
                 },
                 "Habilidades": ["Ataque Brutal", "Escudo de Ferro"]
@@ -625,11 +695,11 @@ def novoJogo():
                     },
                     "Dano": {
                         "Quantidade": 4,
-                        "Porcentagem": 1,
+                        "Porcentagem": 1
                     },
                     "Sorte": {
                         "Quantidade": 1,
-                        "Porcentagem": 1,
+                        "Porcentagem": 1
                     },    
                 },
                 "Habilidades": ["Bola de Fogo", "Relâmpago em Cadeia"]
@@ -664,11 +734,11 @@ def novoJogo():
                     },
                     "Dano": {
                         "Quantidade": 2,
-                        "Porcentagem": 1,
+                        "Porcentagem": 1
                     },
                     "Sorte": {
                         "Quantidade": 1,
-                        "Porcentagem": 1,
+                        "Porcentagem": 1
                     },    
                 },
                 "Habilidades": ["Tiro Preciso", "Camuflagem"]
@@ -703,11 +773,11 @@ def novoJogo():
                     },
                     "Dano": {
                         "Quantidade": 2,
-                        "Porcentagem": 1,
+                        "Porcentagem": 1
                     },
                     "Sorte": {
                         "Quantidade": 1,
-                        "Porcentagem": 1,
+                        "Porcentagem": 1
                     },    
                 },
                 "Habilidades": ["Tiro Preciso", "Camuflagem"]
@@ -877,7 +947,7 @@ def exploracao():
         
         # Caminho de estrada e caverna grande,
         elif caminho > 25 and caminho <= 30:
-            if personagem["CavernaExplorada"] == 10:
+            if personagem["CavernaExplorada"] >= 10:
                 print("Qual caminho devo seguir: ")
                 opcao = int(input("1- Seguir estrada \n2- Seguir Caverna misteriosa \nOpção: "))
                 
@@ -986,8 +1056,8 @@ def cavernaPequena():
     time.sleep(1)
     print(f"Parabéns, {personagem['Nome']} você derrotou todos os monstros da Caverna!!! ")
     
-    personagem['CavernaExplorada']  =+ 1
-    if chance >= 1:
+    personagem['CavernaExplorada'] = personagem['CavernaExplorada'] + 1
+    if chance >= 7:
         itens()
     else:
         pass
@@ -1026,7 +1096,7 @@ def cavernaMedia():
     print(f"Parabéns, {personagem['Nome']} você derrotou todos os monstros da Caverna!!! ")
     time.sleep(1)
     
-    personagem['CavernaExplorada']  =+ 2
+    personagem['CavernaExplorada'] = personagem['CavernaExplorada'] + 2
     if chance >= 5:
         itens()
     else:
