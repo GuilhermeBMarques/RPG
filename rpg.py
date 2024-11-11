@@ -302,7 +302,7 @@ def batalha():
                         
                     if monstros[inimigo]['Sorte'] >= chance:
                         personagem['Atributos']['Vida'] -= monstros[inimigo]['Dano']
-                        print(f"{monstros[inimigo]['Classe']} deu - {monstros[inimigo]['Dano']} de dano")
+                        print(f"{monstros[inimigo]['Classe']} deu -{monstros[inimigo]['Dano']} de dano")
                         print(f"{personagem['Classe']} \n❤ﾠﾠ{personagem['Atributos']['Vida']} \n⚔ﾠﾠDano: {personagem['Atributos']['Dano']} \n")
                         
                         if personagem['Atributos']['Vida'] <= 0:
@@ -675,7 +675,8 @@ def exploracao():
     global inimigo
     mudarValor = True
     caminhoSalvo = 0
-
+    chancecaverna = 0
+    
     while True:
 
         # Se não estiver mais estamina volta pra vila
@@ -724,62 +725,60 @@ def exploracao():
                     mudarValor = False
                     time.sleep(1)
         
-        # Caminho de estrada e caverna pequena, media e grande
-        elif caminho > 10 and caminho <= 20:
-            chancecaverna = random.randint(1, 25)
+                # Caminho de estrada e caverna pequena,    
         
-        # Caminho de estrada e caverna pequena,    
-            if chancecaverna <= 10:
-                
-                print("Qual caminho devo seguir: ")
-                opcao = int(input("1- Seguir estrada \n2- Seguir caverna \nOpção: "))
-                match opcao:
-                    case 1:
-                        personagem["Estamina"] -= 2
-                        pass 
-                    case 2:
-                        personagem["Estamina"] -= 2
-                        cavernaPequena()
-                    case _:
-                        print("Opção Inválida!")
-                        caminhoSalvo = caminho
-                        mudarValor = False
-                        time.sleep(1)
-        
+        # Caminho de estrada e caverna pequena
+        elif caminho > 15 and caminho <= 20:
+            print("Qual caminho devo seguir: ")
+            opcao = int(input("1- Seguir estrada \n2- Seguir caverna \nOpção: "))
+            match opcao:
+                case 1:
+                    personagem["Estamina"] -= 2
+                    pass 
+                case 2:
+                    personagem["Estamina"] -= 2
+                    cavernaPequena()
+                case _:
+                    print("Opção Inválida!")
+                    caminhoSalvo = caminho
+                    mudarValor = False
+                    time.sleep(1)
+               
         # Caminho de estrada e caverna media,         
-        elif chancecaverna > 20 and chancecaverna <= 25:
-                print("Qual caminho devo seguir: ")
-                opcao = int(input("1- Seguir estrada \n2- Seguir caverna media \nOpção: "))
-                match opcao:
-                    case 1:
-                        personagem["Estamina"] -= 2
-                        pass 
-                    case 2:
-                        personagem["Estamina"] -= 2
-                        cavernaMed()
-                    case _:
-                        print("Opção Inválida!")
-                        caminhoSalvo = caminho
-                        mudarValor = False
-                        time.sleep(1)
+        elif caminho > 20 and caminho <= 25:
+            print("Qual caminho devo seguir: ")
+            opcao = int(input("1- Seguir estrada \n2- Seguir caverna media \nOpção: "))
+            match opcao:
+                case 1:
+                    personagem["Estamina"] -= 2
+                    pass 
+                case 2:
+                    personagem["Estamina"] -= 2
+                    cavernaMedia()
+                case _:
+                    print("Opção Inválida!")
+                    caminhoSalvo = caminho
+                    mudarValor = False
+                    time.sleep(1)
         
         # Caminho de estrada e caverna grande,
-        elif chancecaverna > 25 and chancecaverna <= 30:
-            if personagem["CavernaExplorada"] == 15:
-                    print("Qual caminho devo seguir: ")
-                    opcao = int(input("1- Seguir estrada \n2- Seguir Caverna misteriosa \nOpção: "))
-                    match opcao:
-                        case 1:
-                            personagem["Estamina"] -= 2
-                            pass 
-                        case 2:
-                            personagem["Estamina"] -= 2
-                            cavernaGrande()
-                        case _:
-                            print("Opção Inválida!")
-                            caminhoSalvo = caminho
-                            mudarValor = False
-                            time.sleep(1)
+        elif caminho > 25 and caminho <= 30:
+            if personagem["CavernaExplorada"] == 10:
+                print("Qual caminho devo seguir: ")
+                opcao = int(input("1- Seguir estrada \n2- Seguir Caverna misteriosa \nOpção: "))
+                
+                match opcao:
+                    case 1:
+                        personagem["Estamina"] -= 2
+                        pass 
+                    case 2:
+                        personagem["Estamina"] -= 2
+                        cavernaGrande()
+                    case _:
+                        print("Opção Inválida!")
+                        caminhoSalvo = caminho
+                        mudarValor = False
+                        time.sleep(1)
             else: 
                 print("Qual caminho devo seguir: ")
                 opcao = int(input("1- Seguir estrada \nOpção: "))   
@@ -873,15 +872,14 @@ def cavernaPequena():
     time.sleep(1)
     print(f"Parabéns, {personagem['Nome']} você derrotou todos os monstros da Caverna!!! ")
     
-    
     personagem['CavernaExplorada']  =+ 1
-    if chance >= 1:
+    if chance >= 7:
         itens()
     else:
         pass
     print("Continue explorando para conquistar mais itens e moedas...")
 
-def cavernaMed():
+def cavernaMedia():
     global monstros
     global inimigo
     chance = random.randint(1, 10)
@@ -904,7 +902,8 @@ def cavernaMed():
     print("caminhar mais afundo na caverna....")
 
     time.sleep(1)
-
+    inimigo2 = random.choice([m for m in monstros.keys() if m != "Lorde Lunar"])
+    inimigo = inimigo2
     print(f"Você encontrou um {monstros[inimigo]['Nome']}!")
 
     time.sleep(1)
@@ -1078,7 +1077,7 @@ def mercador():
         print("Bem vindo ao mercado!")
         print("Oque gostaria de comprar?")
         print(f"Suas moedas: {personagem['Moeda']}")
-        opcao = int(input("1- R$: 25 Poção de cura \n2- Poção de Dano R$: 50 \n3- R$: 75 Poção de sorte \n4- Sair \nOpção: "))
+        opcao = int(input("1- R$: 25 Poção de cura \n2- R$: 50 Poção de Dano \n3- R$: 75 Poção de sorte \n4- Sair \nOpção: "))
         
         match opcao:
             case 1:
