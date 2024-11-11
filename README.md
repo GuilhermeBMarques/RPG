@@ -3,6 +3,7 @@ Este RPG é baseado em escolhas por números. O funcionamento é simples: você 
 
 
 ## Explicação do codigo
+## Estruturas
 Estrutura basica para armazenar as classes dos personagens, itens e monstros
 ```
 import os
