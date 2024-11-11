@@ -25,13 +25,7 @@ monstros = {}
 ```
 
 ### def clear():
-Verifica o sistema de operação da maquina se é **Windows** ou **Linux** e limpa a tela
+Verifica a operação da maquina se é **Windows** ou **Linux** ele limpa a tela
 
 ### def recompensa():
-**recompensa** está sendo chamado após um inimigo ser derrotado no **def batalha():** depois começa a chamar as estruturas como global, faz um ganhoMoeda = random pra dar uma certa quantidade de dinheiro, aumenta as kills para + 1 e as moedas do personagem, reseta a vida inical do mostros[inimigo] e da um print com um if dentro que verifica o genero do mostro  e mostra os ganhoos
-
-
-
-
-### def clear():
-
+**recompensa** está sendo chamado após um inimigo ser derrotado dentro da função **batalha()**, depois declara as variaveis globais para atualizar as quantidades de moedas e as kills, `ganhoMoeda = random.randint(1, 10)`, `personagem['Kills'] += 1`, em seguida reseta a vida do inical do inimigo pela sua inicial, e exibe uma mensagem de qual genero do inimigo derrotado, e mostra as recompensas
