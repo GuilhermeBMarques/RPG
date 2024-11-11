@@ -39,6 +39,9 @@ Gerencia a interação quando o **jogador** morre no jogo, ela exibe uma mensage
 ### def recompensa()
 **recompensa** está sendo chamado após um inimigo ser derrotado dentro da função **batalha()**, depois declara as variaveis globais para atualizar as quantidades de moedas e as kills, `ganhoMoeda = random.randint(1, 10)`, `personagem['Kills'] += 1`, em seguida reseta a vida do inical do inimigo pela sua inicial, e exibe uma mensagem de qual genero do inimigo derrotado, e mostra as recompensas.
 
+### def iniciarJogo()
+Menu inicial do jogo "Civilização Zero", exibe três **opções:** **iniciar** um **novo jogo**, **instruções** ou **sair**, se a escolha for 1, a função chama `novoJogo()`, se for 2, chama `instrucoes()`, se for 3, o programa termina.
+
 ### def instrucoes()
 Exibe as instruções do jogo no terminal, informando ao jogador como os comandos funcionam, o objetivo do jogo e como interagir com o sistema.
 
