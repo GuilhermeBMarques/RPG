@@ -24,37 +24,47 @@ ArmasInvocador = {}
 monstros = {}
 ```
 
+### def itens():
+Chama a variável global do **personagem** para atualizar o seu item em `ArmasGuerreiro[]` que inicia vazio, dependendo da classe que o jogador escolheu, o codigo verifica o indentificador pelo `if personagem["Identificador"] == "Guerreiro":` e escolha aleatoriamente uma arma do **ArmasGuerreiro** usando **random.choice()** que recebe string ou int, depois faz a listagem e o key retorna todas as armas do ArmasGuerreiro em uma lista, em seguida retorna uma arma sorteada, retorna um print mostrando a arma atual dele e pergunta o jogador deseja trocar, se o jogador querer trocar,  a nova arma é adicionada à mochila do **personagem** com `personagem['Mochila']['ArmasGuerreiro'] = {armasRandom: ArmasGuerreiro[armasRandom]}`.
+
 ### def clear():
-Verifica a operação da maquina se é **Windows** ou **Linux** ele limpa a tela
+Verifica a operação da maquina se é **Windows** ou **Linux** ele limpa a tela.
+
+### def batalha()
+Função de batalha onde o **personagem** do **jogador** enfrenta um monstro em turnos, cada um podendo acertar o ataque enquanto errar comparando um random sendo menor que a sorte dele, o **jogador** pode escolher entre **atacar**, **usar itens** da mochila ou **tentar fugir**, se ele atacar o ataque causa dano baseado nas armas do **personagem**, e o monstro pode atacar de volta, se o dano do monstro atingir a vida do **jogador** a zero, ele perde e leva para `playerMorto()`, se ele usar itens, pode tanto se curar, aumentar o dano ou a sorte do **personagem**, se ele tentar fugir tem uma chance de conseguir, em caso que ele n consegue, o monstro ataca novamente, o jogo continua até que um dos lados vença ou o **jogador** fuja com sucesso, tambem tem uma verificação com o **identificador** pra ver a classe ele ta usando e definir o uso de arma dele
+
+### def playerMorto()
+Gerencia a interação quando o **jogador** morre no jogo, ela exibe uma mensagem informando o nome do inimigo que matou o **jogador**, mostrando as estatísticas do **jogador**, como o número de inimigos mortos e cavernas exploradas, após isso, o **jogador** é perguntado se deseja reiniciar o `novoJogo` ou retornar ao `iniciarJogo`, variáveis globais como **personagem**, monstros e inimigo são utilizadas para acessar as informações necessárias.
 
 ### def recompensa():
-**recompensa** está sendo chamado após um inimigo ser derrotado dentro da função **batalha()**, depois declara as variaveis globais para atualizar as quantidades de moedas e as kills, `ganhoMoeda = random.randint(1, 10)`, `personagem['Kills'] += 1`, em seguida reseta a vida do inical do inimigo pela sua inicial, e exibe uma mensagem de qual genero do inimigo derrotado, e mostra as recompensas
+**recompensa** está sendo chamado após um inimigo ser derrotado dentro da função **batalha()**, depois declara as variaveis globais para atualizar as quantidades de moedas e as kills, `ganhoMoeda = random.randint(1, 10)`, `personagem['Kills'] += 1`, em seguida reseta a vida do inical do inimigo pela sua inicial, e exibe uma mensagem de qual genero do inimigo derrotado, e mostra as recompensas.
 
+### def instrucoes()
+Exibe as instruções do jogo no terminal, informando ao jogador como os comandos funcionam, o objetivo do jogo e como interagir com o sistema.
 
-### def itens():
-Chama a variavel global do personagem para atualizar o seu `ArmasGuerreiro[]` que inicia vazio, dependendo da classe que o jogador escolheu, pelo `if personagem["Identificador"] == "Guerreiro":` e seleciona aleatoriamente uma arma do ArmasGuerreiro que passa pelo choice que recebe string ou int, depois faz a listagem e o key retorna todas as armas do ArmasGuerreiro em uma lista,
-depois retorna um print mostrando a arma atual dele e depois acontece uma pergunta se ele quer trocar ou não, caso que ele quer troca a variavel dde `personagem['Mochila']['ArmasGuerreiro'] = {armasRandom: ArmasGuerreiro[armasRandom]}`
+### def novoJogo()
+Inicia um novo jogo, apresentando uma introdução da historia e solicitando ao **jogador** o **nome**, **idade** e a escolha da **classe** do **personagem**, com base na escolha, ela cria um dicionário contendo as informações do personagem, incluindo atributos como vida, dano, sorte, habilidades e itens da mochila, o **jogador** pode escolher entre quatro classes: Guerreiro, Mago, Arqueiro ou Invocador, e as informações são armazenadas no `personagem = {}` conforme a classe selecionada.
 
+### def escolhaPersonagem()
+Exibe as informações do **personagem** selecionado, como classe, atributos (vida, dano e sorte) e habilidades, em seguida, pede ao **jogador** para confirmar a escolha, se o jogador confirmar opção 1, o jogo segue para o `tutorial()`, enquanto se escolher voltar, ele retorna `novoJogo()`, se a entrada for inválida, uma mensagem de erro é exibida.
 
+### def tutorial()
+Inicia o enredo do jogo, onde o jogador onde tem seu nome armazenado em `personagem['Nome']` confrontado com duas **escolhas:** investigar ou ir embora, se o **jogador** fugir, o personagem perde pontos de sorte `personagem['Atributos']['Sorte'] -= 2` e uma consequência é marcada `conseguencia = True`, se o **jogador** investigar, encontra um Goblin atacando na floresta, iniciando a sua primeira `batalha()`, após derrotar o inimigo, o personagem recebe uma recompensa em moedas `personagem['Moeda'] += ganhoMoeda + 2` de um random ganhoMoeda, jogo então prossegue com a `exploracao()`.
 
+### def exploracao()
+Exploração do **personagem** em diferentes caminhos, com base no nível de estamina do **personagem**, permite que ele explore áreas diversas **incluem:** estradas, vilas, cavernas, locais abandonados, inimigos, bolsas no chão, cada área consome estamina `personagem["Estamina"] -= 2`, e pode oferecer recompensas, como moedas, ou batalhas contra monstros, utiliza variáveis globais para acessar informações do **personagem** e dos **monstros**, e armazena o caminho salvo para evitar que o **personagem** quando clicar em uma opção invalida, ele vai pra um caminho.
 
+### def vila()
+Simula a chegada do **personagem** à **vila**, com uma chance de encontrar **NPCS** ou o **mercador** e locais de **cura**.
 
-
-
-
-
-### def mercador():
-O def puxa o global personagem para saber quantas poções tem na mochila e o dinheiro que você tem.
-Se o valor das moedas na sua mochila for igual ou maior do que o preço para comprar a poção ela vai ser aumentada em +1 na "Quantidade" da "Mochila".
-Se o Valor das moedas na sua mochila for meno que o valor ele vai printar que não moedas o suficiente
-Se você colocar um valor que não esta nas opcções aparecerá uma mensagem de opcção invalida
-
-### def motel():
-O def puxa o global personagem para saber quantas moedas você tem na mochila.
-Se as moedas da sua Mochila forem menos que 10, sera printado na tela que você não tem dinheiro o suficiente.
-Se as Moedas da sua Mochila forem iguais ou maiores que 10, você tera sua vida e estamina redefinidos para a VidaInicial e a EstaminaInicial
-
+### def opcaoVila()
+Intereção com o **jogador** para levar a uma parte da vila, **incluem:** motel, mercador e exploracao.
 
 ### def NPC():
-O def vai utilizar um random.randint(1, 25) para definir um numero randomizado.
-Um NPC especifico vai pedir uma quantia de Cabeças de monstros que serão igualados ao 
+Interação com o jogador em uma vila, selecionando aleatoriamente o tipo de encontro com **random.randint(1, 25)**, dependendo do numero gerado, um npc tera dialago com o jogador, **incluem:** rumores sobre uma caverna misteriosa, uma saudação personalizada ao jogador, observações sobre a aura do personagem, ou uma interação silenciosa com um NPC, uma queste de matar monstros e com um gato preto que aumenta a sorte do **personagem**.
+
+### def motel():
+Utiliza a variável global **personagem** para saber quantas moedas você tem na mochila,o jogador tiver menos de 10 moedas, uma mensagem informa que ele não tem dinheiro suficiente e o redireciona para a vila, caso o jogador tenha 10 ou mais moedas, o jogo subtrai 10 moedas do inventário e restaura a vida `personagem['Atributos']['Vida'] = personagem['VidaInicial']` e a estamina `personagem['Estamina'] = personagem['EstaminaInicial']` do jogador para seus valores iniciais.
+
+### def mercador():
+Utiliza a variável global **personagem** para saber a quantidade de poções e de moedas que tem na mochila, se o quantidade de moedas for igual ou maior do que o preço da poção selecionada, a função desconta o valor e aumentada em +1 a quantidadeda poção comprada na mochila, caso o **personagem** não tenha moedas suficientes, é exibida uma mensagem informando que ele não possui moedas suficientes para a comprar, e retorna pra **vila()**.
