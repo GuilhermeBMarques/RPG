@@ -6,6 +6,7 @@ personagem = {}
 inimigo = {}
 conseguencia = False
 
+# Armas das classes dos personagens
 ArmasGuerreiro = {
     "Berserk": {
         "Nome": "Berserk Sword",
@@ -198,6 +199,7 @@ ArmasInvocador = {
     },   
 }
 
+# Monstros
 monstros = {
     "Goblin": {
         "Classe": "Goblin",
@@ -300,6 +302,7 @@ monstros = {
     },
 }
 
+# Sistema de itens encontrados
 def itens():
     clear()
     global personagem
@@ -374,12 +377,14 @@ def itens():
                 time.sleep(1)
                 itens()
 
+# Limpar a tela
 def clear():
     if os.name == 'nt': 
         os.system('cls')
     else: 
         os.system('clear')
         
+# Sistema de batalha
 def batalha():
     global personagem
     global monstros
@@ -510,7 +515,8 @@ def batalha():
                 print("Opção Inválida!")
                 time.sleep(1)
                 clear()
-      
+     
+# Morte do player 
 def playerMorto():
     global personagem
     global monstros
@@ -557,6 +563,7 @@ def playerMorto():
                 clear()
                 playerMorto()
 
+# Recompensa por matar um mostro
 def recompensa(): 
     global personagem
     global monstros
@@ -573,6 +580,7 @@ def recompensa():
     
     print(f"Você derrotou \nRecompensas: \n💰ﾠR$: {ganhoMoeda} \n✨ﾠXP: {ganhoXP} \n☠️ﾠﾠKills: {personagem['Kills']}")
       
+# Sessão do jogador
 def iniciarJogo():
     clear()
     
@@ -590,7 +598,8 @@ def iniciarJogo():
             print("Opção Invalida!")
             time.sleep(1) 
             iniciarJogo()
-            
+  
+# Instruções de como que joga      
 def instrucoes():
     clear()
     
@@ -610,7 +619,8 @@ def instrucoes():
             print("Opção Invalida!")
             time.sleep(1) 
             instrucoes()
-            
+    
+# Partida pra ver os persomagens        
 def novoJogo():
     global personagem
     
@@ -791,7 +801,8 @@ def novoJogo():
             time.sleep(1) 
             clear()
             novoJogo()
-            
+
+# Escolha de personagem     
 def escolhaPersonagem():
     global personagem
     
@@ -810,6 +821,7 @@ def escolhaPersonagem():
             clear()
             escolhaPersonagem()
 
+# Tutorial do primeiro mostro
 def tutorial():
     global personagem
     global monstros
@@ -853,6 +865,7 @@ def tutorial():
     time.sleep(1) 
     exploracao()
 
+# Caminhos
 def exploracao():
     global personagem
     global monstros
@@ -863,7 +876,6 @@ def exploracao():
     
     while True:
 
-        # Se não estiver mais estamina volta pra vila
         if personagem["Estamina"] <= 0:
             print("Voce não consegue andar mais!")
             print("Volte para vila descançar")
@@ -1040,7 +1052,7 @@ def exploracao():
             print(f"Moeda: {bolsa}")
             
             time.sleep(1)
-          
+
 def cavernaPequena():
     global monstros
     global inimigo
@@ -1136,7 +1148,8 @@ def cavernaGrande():
         print("Prepare-se para MORRER!!!!!")
         batalha()
         time.sleep(1)
-    
+
+# Lugar para poder recuperar vida e comprar poção
 def vila():
     global personagem
     global conseguencia
@@ -1150,6 +1163,7 @@ def vila():
     else:
         opcaoVila()
         
+# Opões de escolha da vila   
 def opcaoVila():
     clear()
     print("Você chegou a vila")
@@ -1169,6 +1183,7 @@ def opcaoVila():
             time.sleep(1)
             opcaoVila()   
 
+# NPCS que irão falar uma mensagem
 def NPC():
     clear()
     npc = random.randint(1, 25)
@@ -1232,7 +1247,8 @@ def NPC():
             personagem["Atributos"]['Sorte'] += 1
             time.sleep(1)
             opcaoVila()
-    
+
+# Sistema para recuperar vida e estamina
 def motel():
     global personagem
     clear()
@@ -1270,6 +1286,7 @@ def motel():
             time.sleep(1)
             motel()
   
+# Sistema para comprar poções
 def mercador():
     global personagem
     clear()
