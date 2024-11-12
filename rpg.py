@@ -447,7 +447,9 @@ def batalha():
                 clear()
                 chance = random.randint(1, 3)
 
-                print(personagem['Mochila'])
+                print(f"Cura: \nQuantidade: {personagem['Mochila']['Cura']['Quantidade']} \nPorcentagem: {personagem['Mochila']['Cura']['Porcentagem']}\n")
+                print(f"Dano: \nQuantidade: {personagem['Mochila']['Dano']['Quantidade']} \nPorcentagem: {personagem['Mochila']['Dano']['Porcentagem']}\n")
+                print(f"Sorte: \nQuantidade: {personagem['Mochila']['Sorte']['Quantidade']} \nPorcentagem: {personagem['Mochila']['Sorte']['Porcentagem']}\n")
                 
                 print("Digite o nome do item que deseja usar")
                 print("Digite sair caso queira voltar pra batalha")
@@ -455,7 +457,7 @@ def batalha():
                 clear()
                 if opcao in personagem['Mochila']:
                     if personagem['Mochila'][opcao]['Quantidade'] == 0:
-                        print("você n tem mais esse item")
+                        print("Você não tem mais desse item")
                     else:
                         if personagem['Mochila'][opcao] == personagem['Mochila']['Cura']:
                             if personagem['Atributos']['Vida'] <= personagem['VidaInicial']:
@@ -469,11 +471,13 @@ def batalha():
                                     
                         elif personagem['Mochila'][opcao] == personagem['Mochila']['Dano']:
                             personagem['Atributos']['Dano'] += personagem['Mochila']['Dano']['Porcentagem']
+                            personagem['Mochila'][opcao]['Quantidade'] -= 1
                             print(f"Você aumento seu dano para mais: {personagem['Mochila']['Dano']['Porcentagem']}")
                             print(f"Dano: {personagem['Atributos']['Dano']}")
                             
                         elif personagem['Mochila'][opcao] == personagem['Mochila']['Sorte']:
                             personagem['Atributos']['Sorte'] += personagem['Mochila']['Sorte']['Porcentagem']
+                            personagem['Mochila'][opcao]['Quantidade'] -= 1
                             print(f"Você aumento seu sorte para mais: {personagem['Mochila']['Sorte']['Porcentagem']}")
                             print(f"Sorte: {personagem['Atributos']['Sorte']}")
                         else:
