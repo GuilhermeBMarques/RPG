@@ -72,6 +72,11 @@ personagem['CavernaExplorada'] = personagem['CavernaExplorada'] + 1
         time.sleep(2)
         itens()
 ```
+sistema com if para verificar inimigo e não repetir o mesmo monstros 
+```
+inimigo2 = random.choice([m for m in monstros.keys() if m != inimigo and m != "MoonLord" and m not in inimigo and m not in inimigo])
+    inimigo = inimigo2
+```
 se nada for encontrado, o jogo incentiva a continuação da exploração, e volta para `exploracao()`.
 
 ### def cavernaMedia()
@@ -83,6 +88,11 @@ personagem['CavernaExplorada'] = personagem['CavernaExplorada'] + 2
         print("Enquanto explora os restos dos monstros derrotados, você encontra alguns itens valiosos escondidos nas cavernas!")
         time.sleep(2)
         itens()
+```
+sistema com if para verificar inimigo e não repetir o mesmo monstros 
+```
+inimigo2 = random.choice([m for m in monstros.keys() if m != inimigo and m != "MoonLord" and m not in inimigo and m not in inimigo])
+    inimigo = inimigo2
 ```
 se nada for encontrado, o jogo incentiva a continuação da exploração, e volta para `exploracao()`.
 
@@ -98,7 +108,6 @@ if conseguencia == True:
         batalha()
         batalha()
 ```
-
 a função utiliza a `batalha()` para gerenciar os confrontos, após derrotar o MoonLord, o jogo termina com uma mensagem de agradecimento
 
 ### def vila()
