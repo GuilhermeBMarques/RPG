@@ -87,7 +87,7 @@ Utiliza a variável global **personagem** para saber quantas moedas você tem na
 se o jogador tiver menos de 10 moedas, uma mensagem informa que ele não tem dinheiro suficiente e o redireciona para a vila.
 
 ### def mercador()
-Utiliza a variável global **personagem** para saber a quantidade de poções e de moedas que tem na mochila, se o quantidade de moedas for igual ou maior do que o preço da poção selecionada, a função desconta o valor e aumentada em `personagem["Mochila"]['Cura']['Quantidade'] += 1` de poção comprada na mochila 
+Utiliza a variável global **personagem** para saber a quantidade de poções e de moedas que tem na mochila, se o quantidade de moedas for igual ou maior do que o preço da poção selecionada `if personagem["Moeda"] >= 25:`, a função desconta o valor e aumentada em `personagem["Mochila"]['Cura']['Quantidade'] += 1` de poção comprada na mochila 
 ```
 match opcao:
     case 1:
