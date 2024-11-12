@@ -73,7 +73,7 @@ Simula a chegada do **personagem** à **vila**, com uma chance de encontrar **NP
 Intereção com o **jogador** para levar a uma parte da vila, **incluem:** motel, mercador e exploracao.
 
 ### def NPC()
-Interação com o jogador em uma vila, selecionando aleatoriamente o tipo de encontro com **random.randint(1, 25)**, dependendo do numero gerado, um npc tera dialago com o jogador, **incluem:** rumores sobre uma caverna misteriosa, uma saudação personalizada ao jogador, observações sobre a aura do personagem, ou uma interação silenciosa com um NPC, uma queste de matar monstros e com um gato preto que aumenta a sorte do **personagem**.
+Interação com o jogador em uma vila, selecionando aleatoriamente o tipo de encontro com **npc = random.randint(1, 25)**, dependendo do numero gerado, um npc tera dialago com o jogador, **incluem:** rumores sobre uma caverna misteriosa, uma saudação personalizada ao jogador, observações sobre a aura do personagem, ou uma interação silenciosa com um NPC, uma queste de matar monstros e com um gato preto que aumenta a sorte do **personagem**.
 
 ### def motel()
 Utiliza a variável global **personagem** para saber quantas moedas você tem na mochila, caso o jogador tenha 10 ou mais moedas, o jogo subtrai 10 moedas do inventário e restaura a vida `personagem['Atributos']['Vida'] = personagem['VidaInicial']` e a estamina `personagem['Estamina'] = personagem['EstaminaInicial']` do jogador para seus valores iniciais.
