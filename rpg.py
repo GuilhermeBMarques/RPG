@@ -1048,69 +1048,118 @@ def exploracao():
             print(f"Você encontrou {'um' if monstros[inimigo]['Sexo'] == "Masculino" else 'uma'} {monstros[inimigo]['Classe']} no caminho")
             time.sleep(2)
             batalha()
-                     
+
+# Caverna pequena                 
 def cavernaPequena():
     global monstros
     global inimigo
     chance = random.randint(1, 10)
     clear()
     
-    print(f"Durante sua jornada {personagem['Nome']} encontra uma pequena caverna e decide que")
-    print("é um bom lugar para treinar derrotando monstros...")
+    print(f"Durante sua jornada, você encontra uma pequena caverna escura e silenciosa")
+    print("O som de gotas caindo nas pedras ecoa por todo o lugar")
+    print("Você decide que é um bom lugar para treinar, derrotando monstros e aprimorando suas habilidades...\n")
+    
+    # Primeira batalha
     inimigo = random.choice([m for m in monstros.keys() if m != "MoonLord"])
-    print(f"Você encontrou um {monstros[inimigo]['Nome']}!")
+    print(f"Você encontra um {monstros[inimigo]['Nome']} escondido nas sombras da caverna")
+    print("O monstro se aproxima com olhos brilhando na escuridão, pronto para atacar")
+    print(f"Prepare-se para a batalha!")
     time.sleep(1)
     batalha()
     time.sleep(1)
-    print(f"Parabéns, {personagem['Nome']} você derrotou todos os monstros da Caverna!!! ")
+    
+    # Segunda batalha
+    inimigo2 = random.choice([m for m in monstros.keys() if m != inimigo and m != "MoonLord" and m not in inimigo])
+    inimigo = inimigo2
+    print(f"Você sente uma presença sinistra vindo da caverna")
+    print(f"Ao explorar, encontra um {monstros[inimigo]['Nome']}")
+    print("O monstro, mais feroz que os anteriores")
+    print(f"Prepare-se para a batalha!")
+    time.sleep(1)
+    batalha()
+    time.sleep(1)
+
+    print(f"Parabéns, {personagem['Nome']}! Você derrotou todos os monstros da Caverna!")
+    print("A caverna parece estar silenciosa novamente...")
+    time.sleep(1)
     
     personagem['CavernaExplorada'] = personagem['CavernaExplorada'] + 1
-    if chance >= 1:
+    if chance >= 7:
+        print("Enquanto explora os restos dos monstros derrotados, você encontra alguns itens valiosos escondidos nas cavernas!")
+        time.sleep(2)
         itens()
     else:
+        print("Nada de interessante foi encontrado na caverna...")
         pass
     print("Continue explorando para conquistar mais itens e moedas...")
 
+# Caverna media
 def cavernaMedia():
     global monstros
     global inimigo
     chance = random.randint(1, 10)
     clear()
     
-    print(f"Enquanto andava pela floresta a procura de novos desafios {personagem['Nome']}")
-    print("acaba encontrando uma caverna, que lhe chamou muita a atenção")
+    print(f"Enquanto caminhava pela floresta em busca de novos desafios, algo chamou sua atenção à distância")
+    print("Uma entrada de caverna media, parcialmente escondida por vegetação densa, parecia esconder mistérios antigos e perigos desconhecidos")
     time.sleep(1)
-    print(f"{personagem['Nome']} entra na caverna e percebe que não estava tão inabitada quanto parecia...")
-    inimigo = random.choice([m for m in monstros.keys() if m != "MoonLord"])
-    print(f"Você encontrou um {monstros[inimigo]['Nome']}!")
-    time.sleep(1)
-    batalha()
-
-    time.sleep(1)
-
-    print(f"Após derrotar o monstro {personagem['Nome']} continua a")
-    print("caminhar mais afundo na caverna...")
+    print(f"Você se aproxima e sem quere cai dentro da caverna")
+    print("As paredes cobertas de musgo refletem a pouca luz que entra pela entrada")
+    print("No fundo, um som distante de água gotejando ecoa pela caverna")
     time.sleep(1)
     
-    novoInimigo = random.choice([m for m in monstros.keys() if m != inimigo and m != "MoonLord"])
-    inimigo = novoInimigo
-    print(f"Você encontrou um {monstros[inimigo]['Nome']}!")
-
+    # Primeira batalha
+    inimigo = random.choice([m for m in monstros.keys() if m != "MoonLord"])
+    print(f"De repente, um {monstros[inimigo]['Nome']} surge das sombras")
+    print("Sem mais avisos, avançou contra você")
+    print(f"Prepare-se para a batalha!")
     time.sleep(1)
-
     batalha()
-
     time.sleep(1)
-    print(f"Parabéns, {personagem['Nome']} você derrotou todos os monstros da Caverna!!! ")
+    
+    print(f"Após derrotar o {monstros[inimigo]['Nome']}, você decide continuar a exploração da caverna")
+    print("O ambiente vai ficando cada vez mais escuro, parece como se o lugar estivesse guardando um segredo")
+    print("Enquanto caminha, o eco dos seus passos reverbera pelas paredes, criando uma sensação de que a caverna está viva e observando")
+    time.sleep(1)
+    
+    # Segunda batalha
+    inimigo2 = random.choice([m for m in monstros.keys() if m != inimigo and m != "MoonLord" and m not in inimigo and m not in inimigo])
+    inimigo = inimigo2
+    print(f"Você encontra um {monstros[inimigo2]['Nome']}")
+    print(f"Ele bloqueia o caminho, e não há outra saída!")
+    print(f"Prepare-se para a batalha!")
+    time.sleep(1)
+    batalha()
+    time.sleep(1)
+    
+    # Terceira batalha
+    print("A medida que o caminho vai se estreitando, você sente uma presença ainda mais ameaçadora se aproximando...")
+    time.sleep(1)
+    inimigo3 = random.choice([m for m in monstros.keys() if m != inimigo and m != "MoonLord" and m not in inimigo and m not in inimigo2])
+    inimigo = inimigo3
+    print(f"{monstros[inimigo3]['Nome']} aparece em um corredor estreito")
+    print("Ele vem em sua direção com velocidade surpreendente!")
+    print(f"Prepare-se para a batalha!")
+    time.sleep(1)
+    batalha()
+    time.sleep(1)
+    
+    print(f"Parabéns, {personagem['Nome']}! Você derrotou todos os monstros da Caverna!")
+    print("A caverna parece estar silenciosa novamente...")
     time.sleep(1)
     
     personagem['CavernaExplorada'] = personagem['CavernaExplorada'] + 2
     if chance >= 5:
+        print("Enquanto explora os restos dos monstros derrotados, você encontra alguns itens valiosos escondidos nas cavernas!")
+        time.sleep(1)
         itens()
     else:
+        print("Nada de interessante foi encontrado na caverna...")
         pass
     print("Continue explorando para conquistar mais itens e moedas...")
 
+# Caverna grande
 def cavernaGrande():
     global monstros
     global inimigo
@@ -1118,44 +1167,94 @@ def cavernaGrande():
     
     clear()
     print("Você encontrou uma caverna misteriosa durante sua caminhada")
-    print("Dela emanava uma forte aura maligna!")
+    print("Dela emanava uma forte aura maligna, como se algo muito sombrio estivesse à espreita")
     time.sleep(2)
-    print("Você entrou na caverna final...")
+    print("Você hesita por um momento, mas decide entrar. O que poderia ser mais perigoso do que o que já enfrentou?")
+    print("À medida que adentra a caverna, o ambiente fica mais denso e a luz do exterior começa a desaparecer")
+    print("Cada passo ecoa, amplificado pelas paredes de pedra que parecem sussurrar segredos antigos...")
+    time.sleep(3)
+    
+    print("À medida que se aprofunda na caverna, um som suave mas inquietante começa a se manifestar à distância")
+    print("Sombras estranhas dançam pelas paredes, e você percebe que não está sozinho...")
+    time.sleep(2)
+    
     if conseguencia == True:
+        # Primeira batalha - Fadas
         inimigo = "Fadas"
+        print(f"Você encontrou um grupo de duas {monstros[inimigo]['Nome']}! Eles emitem uma luz sobrenatural")
+        print("Começam a atacar com feitiços de ilusão")
+        print(f"Prepare-se para a batalha!")
         batalha()
         batalha()
+        time.sleep(1)
+        
+        # Segunda batalha - Ogros
         inimigo = "Ogro"
-        batalha()
-        inimigo = "MoonLord"
-        print(f"Após derrotar os inimigos anteriores, {personagem['Nome']} se encontra em uma lugar com tecnologias")
-        print("que ele nunca havia visto antes")
-        time.sleep(2)
-        print("Flashs de memorias que não eram suas passam pelos seus olhos, mostrando todo o terror causado por milhares de anos ")
-        print("desde o inicio da corrupção pela ganancia do Lorde da Lua, e todo seu plano para destruir a civilização da terra...")
-        print("Você agora esta nos dominios de MoonLord.")
-        time.sleep(2)
-        print(f"Você encontrou o Boss {monstros[inimigo]['Nome']}")
-        print("Prepare-se para MORRER!!!!!")
+        print(f"Após derrotar as fadas, você se depara com um {monstros[inimigo]['Nome']} gigante bloqueando o caminho")
+        print("O ogro está pronto para esmagá-lo com sua força brutal")
+        print(f"Prepare-se para a batalha!")
         batalha()
         time.sleep(1)
+        
+        # Boss final - MoonLord
+        inimigo = "MoonLord"
+        print(f"Após derrotar os inimigos anteriores, {personagem['Nome']} entra em uma sala secreta")
+        print("Você encontra tecnologia alienígena, jamais vista antes")
+        print("Você vê imagens de um reino perdido, do caos causado pela ganância do Lorde da Lua")
+        time.sleep(2)
+        print("A história de uma civilização destruída por sua corrupção se desenrola diante de seus olhos...")
+        print("Você agora está nos domínios do MoonLord, ele está esperando por você")
+        print(f"Você encontra o Boss {monstros[inimigo]['Nome']}!")
+        print("Prepare-se para a batalha final, o destino do mundo está em suas mãos!")
+        batalha()
+        time.sleep(2)
     else:
+        # Segunda batalha - Fadas
         inimigo = "Fadas"
+        print(f"Você encontrou um grupo de duas {monstros[inimigo]['Nome']}! Eles emitem uma luz sobrenatural")
+        print("Começam a atacar com feitiços de ilusão")
+        print(f"Prepare-se para a batalha!")
         batalha()
-        batalha()
-        inimigo = "Pessoaﾠdesconhecida"
-        batalha()
-        inimigo = "MoonLord"
-        print(f"Após derrotar os inimigos anteriores, {personagem['Nome']} se encontra em uma lugar com tecnologias")
-        print("que ele nunca havia visto antes")
-        time.sleep(2)
-        print("Flashs de memorias que não eram suas passam pelos seus olhos, mostrando todo o terror causado por milhares de anos ")
-        print("desde o inicio da corrupção pela ganancia do Lorde da Lua, e todo seu plano para destruir a civilização da terra...")
-        print("Você agora esta nos dominios de MoonLord.")
-        print(f"Você encontrou o Boss {monstros[inimigo]['Nome']}")
-        print("Prepare-se para MORRER!!!!!")
         batalha()
         time.sleep(1)
+        
+        # Segunda batalha - Pessoa desconhecida
+        inimigo = "Pessoaﾠdesconhecida"
+        print(f"Após derrotar as fadas, uma figura misteriosa aparece no caminho")
+        print(f"Essa {monstros[inimigo]['Nome']} parece não ter intenções amigáveis")
+        print(f"Prepare-se para a batalha!")
+        batalha()
+        time.sleep(1)
+        
+        # Terceira batalha - Ogros
+        inimigo = "Ogro"
+        print(f"Você avança, mas se depara com outro dois {monstros[inimigo]['Nome']} gigante!")
+        print("O ogro parece ainda mais forte, e ele se prepara para esmagá-lo com um golpe mortal!")
+        print(f"Prepare-se para a batalha!")
+        batalha()
+        batalha()
+        time.sleep(1)
+ 
+        # Boss final - MoonLord
+        inimigo = "MoonLord"
+        print(f"Após derrotar os inimigos anteriores, {personagem['Nome']} entra em uma sala secreta")
+        print("Você encontra tecnologia alienígena, jamais vista antes")
+        print("Você vê imagens de um reino perdido, do caos causado pela ganância do Lorde da Lua")
+        time.sleep(2)
+        print("A história de uma civilização destruída por sua corrupção se desenrola diante de seus olhos...")
+        print("Você agora está nos domínios do MoonLord, ele está esperando por você")
+        print(f"Você encontra o Boss {monstros[inimigo]['Nome']}!")
+        print("Prepare-se para a batalha final, o destino do mundo está em suas mãos!")
+        batalha()
+        time.sleep(2)
+    
+    print("Parabéns, você derrotou o MoonLord e completou a caverna!")
+    time.sleep(2)
+    print("Obrigado por acabar o nosso jogo!")
+    time.sleep(1)
+    print("Mas a guerra não acabou. Outros perigos podem surgir a qualquer momento.")
+    time.sleep(3)
+    exit()
 
 # Lugar para poder recuperar vida e comprar poção
 def vila():
