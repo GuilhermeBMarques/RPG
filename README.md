@@ -63,13 +63,43 @@ Inicia o enredo do jogo, onde o jogador onde tem seu nome armazenado em `persona
 Exploração do **personagem** em diferentes caminhos, com base no nível de estamina do **personagem**, permite que ele explore áreas diversas **incluem:** estradas, vilas, cavernas, locais abandonados, inimigos, bolsas no chão, cada área consome estamina `personagem["Estamina"] -= 2` e pode oferecer recompensas, como moedas, ou batalhas contra monstros, utiliza variáveis globais para acessar informações do **personagem** e dos **monstros**, e armazena o caminho salvo para evitar que o **personagem** quando clicar em uma opção invalida, ele vai pra um caminho.
 
 ### def cavernaPequena()
-Uma caverna onde o **jogador** enfrenta duas batalhas contra monstros aleatórios, exceto o "MoonLord", após derrotar os inimigos, a caverna é marcada como **explorada** e o **jogador** tem uma chance de encontrar uma arma para classe dele, se nada for encontrado, o jogo incentiva a continuação da exploração.
+Uma caverna onde o **jogador** enfrenta duas batalhas contra monstros aleatórios, exceto o "MoonLord"
+`inimigo = random.choice([m for m in monstros.keys() if m != "MoonLord"])`, após derrotar os inimigos, a caverna é marcada como **explorada** e o **jogador** tem uma chance `chance = random.randint(1, 10)` de encontrar uma arma para classe dele
+```
+personagem['CavernaExplorada'] = personagem['CavernaExplorada'] + 1
+    if chance >= 7:
+        print("Enquanto explora os restos dos monstros derrotados, você encontra alguns itens valiosos escondidos nas cavernas!")
+        time.sleep(2)
+        itens()
+```
+se nada for encontrado, o jogo incentiva a continuação da exploração, e volta para `exploracao()`.
 
 ### def cavernaMedia()
-Uma caverna onde o **jogador** enfrenta três batalhas contra monstros aleatórios, exceto o "MoonLord", após derrotar os inimigos, a caverna é marcada como **explorada**" e o **jogador** tem uma chance de encontrar uma arma para classe dele, se nada for encontrado, o jogo incentiva a continuação da exploração.
+Uma caverna onde o **jogador** enfrenta três batalhas contra monstros aleatórios, exceto o "MoonLord"
+`inimigo = random.choice([m for m in monstros.keys() if m != "MoonLord"])`, após derrotar os inimigos, a caverna é marcada como **explorada**" e o **jogador** tem uma chance `chance = random.randint(1, 10)` de encontrar uma arma para classe dele
+```
+personagem['CavernaExplorada'] = personagem['CavernaExplorada'] + 2
+    if chance >= 5:
+        print("Enquanto explora os restos dos monstros derrotados, você encontra alguns itens valiosos escondidos nas cavernas!")
+        time.sleep(2)
+        itens()
+```
+se nada for encontrado, o jogo incentiva a continuação da exploração, e volta para `exploracao()`.
 
 ### def cavernaGrande()
-Caverna final que enfrenta uma série de batalhas, dependendo do valor da variável conseguencia no começo do jogo, o jogador enfrentará diferentes sequências de inimigos, incluindo **fadas**, **ogros** e o **boss final:** **MoonLord**, a função utiliza a `batalha()` para gerenciar os confrontos, após derrotar o MoonLord, o jogo termina com uma mensagem de agradecimento.
+Caverna final que enfrenta uma série de batalhas, dependendo do valor da variável conseguencia no começo do jogo, o jogador enfrentará diferentes sequências de inimigos, incluindo **fadas**, **ogros** e o **boss final:** **MoonLord**
+```
+if conseguencia == True:
+        # Primeira batalha - Fadas
+        inimigo = "Fadas"
+        print(f"Você encontrou um grupo de duas {monstros[inimigo]['Nome']}! Eles emitem uma luz sobrenatural")
+        print("Começam a atacar com feitiços de ilusão")
+        print(f"Prepare-se para a batalha!")
+        batalha()
+        batalha()
+```
+
+a função utiliza a `batalha()` para gerenciar os confrontos, após derrotar o MoonLord, o jogo termina com uma mensagem de agradecimento
 
 ### def vila()
 Simula a chegada do **personagem** à **vila**, com uma chance de encontrar **NPCS** ou o **mercador** e locais de **cura**, se `chance = random.randint(1, 10)` for `if chance >= 7:` gera uma função `NPC()`.
