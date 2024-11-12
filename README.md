@@ -97,7 +97,7 @@ inimigo = inimigo2
 se nada for encontrado, o jogo incentiva a continuação da exploração, e volta para `exploracao()`.
 
 ### def cavernaGrande()
-Caverna final que enfrenta uma série de batalhas, dependendo do valor da variável conseguencia no começo do jogo, o jogador enfrentará diferentes sequências de inimigos, incluindo **fadas**, **ogros** e o **boss final:** **MoonLord**
+Caverna final que enfrenta uma série de batalhas, dependendo do valor da variável `conseguencia` no começo do jogo, o jogador enfrentará diferentes sequências de inimigos, incluindo **fadas**, **ogros** e o **boss final:** **MoonLord**
 ```
 if conseguencia == True:
         # Primeira batalha - Fadas
