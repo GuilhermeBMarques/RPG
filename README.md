@@ -67,7 +67,7 @@ Uma caverna onde o **jogador** enfrenta três batalhas contra monstros aleatóri
 Caverna final que enfrenta uma série de batalhas, dependendo do valor da variável conseguencia no começo do jogo, o jogador enfrentará diferentes sequências de inimigos, incluindo **fadas**, **ogros** e o **boss final:** **MoonLord**, a função utiliza a `batalha()` para gerenciar os confrontos, após derrotar o MoonLord, o jogo termina com uma mensagem de agradecimento
 
 ### def vila()
-Simula a chegada do **personagem** à **vila**, com uma chance de encontrar **NPCS** ou o **mercador** e locais de **cura**.
+Simula a chegada do **personagem** à **vila**, com uma chance de encontrar **NPCS** ou o **mercador** e locais de **cura**, se `chance = random.randint(1, 10)` for `if chance >= 7:` gera uma função `NPC()`
 
 ### def opcaoVila()
 Intereção com o **jogador** para levar a uma parte da vila, **incluem:** motel, mercador e exploracao.
