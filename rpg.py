@@ -622,7 +622,7 @@ def novoJogo():
     time.sleep(5)
     print("Bem-vindo a \033[1mCivilização Zero\033[0m!") 
     print("Encare novos desafios!!\n")
-    print("Dê \033[1mvida\033[0m ao seu herói: ")
+    print("Dê \033[1mvida\033[0m ao seu herói ")
     nome = str(input("Digite o \033[1mnome\033[0m do seu herói: "))
     idade = int(input("Digite a \033[1midade\033[0m do seu herói: "))
     
@@ -1104,11 +1104,11 @@ def cavernaMedia():
     
     print(f"Enquanto caminhava pela floresta em busca de novos desafios, algo chamou sua atenção à distância")
     print("Uma entrada de caverna media, parcialmente escondida por vegetação densa, parecia esconder mistérios antigos e perigos desconhecidos")
-    time.sleep(1)
+    time.sleep(3)
     print(f"Você se aproxima e sem quere cai dentro da caverna")
     print("As paredes cobertas de musgo refletem a pouca luz que entra pela entrada")
     print("No fundo, um som distante de água gotejando ecoa pela caverna")
-    time.sleep(1)
+    time.sleep(3)
     
     # Primeira batalha
     inimigo = random.choice([m for m in monstros.keys() if m != "MoonLord"])
@@ -1122,7 +1122,7 @@ def cavernaMedia():
     print(f"Após derrotar o {monstros[inimigo]['Nome']}, você decide continuar a exploração da caverna")
     print("O ambiente vai ficando cada vez mais escuro, parece como se o lugar estivesse guardando um segredo")
     print("Enquanto caminha, o eco dos seus passos reverbera pelas paredes, criando uma sensação de que a caverna está viva e observando")
-    time.sleep(1)
+    time.sleep(2)
     
     # Segunda batalha
     inimigo2 = random.choice([m for m in monstros.keys() if m != inimigo and m != "MoonLord" and m not in inimigo and m not in inimigo])
