@@ -79,4 +79,20 @@ Interação com o jogador em uma vila, selecionando aleatoriamente o tipo de enc
 Utiliza a variável global **personagem** para saber quantas moedas você tem na mochila,o jogador tiver menos de 10 moedas, uma mensagem informa que ele não tem dinheiro suficiente e o redireciona para a vila, caso o jogador tenha 10 ou mais moedas, o jogo subtrai 10 moedas do inventário e restaura a vida `personagem['Atributos']['Vida'] = personagem['VidaInicial']` e a estamina `personagem['Estamina'] = personagem['EstaminaInicial']` do jogador para seus valores iniciais.
 
 ### def mercador()
-Utiliza a variável global **personagem** para saber a quantidade de poções e de moedas que tem na mochila, se o quantidade de moedas for igual ou maior do que o preço da poção selecionada, a função desconta o valor e aumentada em +1 a quantidade de poção comprada na mochila, caso o **personagem** não tenha moedas suficientes, é exibida uma mensagem informando que ele não possui moedas suficientes para a comprar, e retorna pra **vila()**.
+Utiliza a variável global **personagem** para saber a quantidade de poções e de moedas que tem na mochila, se o quantidade de moedas for igual ou maior do que o preço da poção selecionada, a função desconta o valor e aumentada em +1 a quantidade de poção comprada na mochila 
+```
+match opcao:
+            case 1:
+                if personagem["Moeda"] >= 25:
+                    personagem["Moeda"] -= 25
+                    personagem["Mochila"]['Cura']['Quantidade'] += 1
+                    print(f"Você esta agora com {personagem["Mochila"]['Cura']['Quantidade']}")
+                    print(f"Moeda: {personagem["Moeda"]}")
+```
+caso o **personagem** não tenha moedas suficientes, é exibida uma mensagem informando que ele não possui moedas suficientes para a comprar, e retorna pra **vila()**.
+```
+else:
+     print("Você não tem moeda suficiente!")
+     time.sleep(1)
+     clear() 
+```
