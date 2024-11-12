@@ -31,7 +31,12 @@ Chama a variável global do **personagem** para atualizar o seu item em `ArmasGu
 Verifica a operação da maquina se é **Windows** ou **Linux** ele limpa a tela.
 
 ### def batalha()
-Função de batalha onde o **personagem** do **jogador** enfrenta um monstro em turnos, cada um podendo acertar o ataque enquanto errar comparando um random sendo menor que a sorte dele, o **jogador** pode escolher entre **atacar**, **usar itens** da mochila ou **tentar fugir**, se ele atacar o ataque causa dano baseado nas armas do **personagem**, e o monstro pode atacar de volta, se o dano do monstro atingir a vida do **jogador** a zero, ele perde e leva para `playerMorto()`, se ele usar itens, pode tanto se curar, aumentar o dano ou a sorte do **personagem**, se ele tentar fugir tem uma chance de conseguir, em caso que ele n consegue, o monstro ataca novamente, o jogo continua até que um dos lados vença ou o **jogador** fuja com sucesso, tambem tem uma verificação com o **identificador** pra ver a classe ele ta usando e definir o uso de arma dele.
+Função de `batalha()` onde o **personagem** do **jogador** enfrenta um monstro, com base em escolhas e turnos, até que a vida de um dos dois chege a zero, ou o **jogador** consgiga fugir
+```
+while personagem['Atributos']['Vida'] > 0 and monstros[inimigo]['Vida'] > 0:
+        opcao = int(input("Deseja: \n1- Atacar \n2- Usar Mochila \n3- Fugir \nOpção: "))
+```
+O **jogador** pode escolher entre **atacar**, **usar itens** da mochila ou **tentar fugir**, se ele atacar o ataque causa dano baseado nas armas do **personagem**, e o monstro pode atacar de volta, se o dano do monstro atingir a vida do **jogador** a zero, ele perde e leva para `playerMorto()`, se ele usar itens, pode tanto se curar, aumentar o dano ou a sorte do **personagem**, se ele tentar fugir tem uma chance de conseguir, em caso que ele n consegue, o monstro ataca novamente, o jogo continua até que um dos lados vença ou o **jogador** fuja com sucesso, tambem tem uma verificação com o **identificador** pra ver a classe ele ta usando e definir o uso de arma dele.
 
 ### def playerMorto()
 Gerencia a interação quando o **jogador** morre no jogo, ela exibe uma mensagem informando o nome do inimigo que matou o **jogador**, mostrando as estatísticas do **jogador**, como o número de inimigos mortos e cavernas exploradas, após isso, o **jogador** é perguntado se deseja reiniciar o `novoJogo` ou retornar ao `iniciarJogo`, variáveis globais como **personagem**, monstros e inimigo são utilizadas para acessar as informações necessárias.
