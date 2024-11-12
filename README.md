@@ -75,7 +75,7 @@ personagem['CavernaExplorada'] = personagem['CavernaExplorada'] + 1
 sistema com if para verificar inimigo e não repetir o mesmo monstros 
 ```
 inimigo2 = random.choice([m for m in monstros.keys() if m != inimigo and m != "MoonLord" and m not in inimigo and m not in inimigo])
-    inimigo = inimigo2
+inimigo = inimigo2
 ```
 se nada for encontrado, o jogo incentiva a continuação da exploração, e volta para `exploracao()`.
 
@@ -92,7 +92,7 @@ personagem['CavernaExplorada'] = personagem['CavernaExplorada'] + 2
 sistema com if para verificar inimigo e não repetir o mesmo monstros 
 ```
 inimigo2 = random.choice([m for m in monstros.keys() if m != inimigo and m != "MoonLord" and m not in inimigo and m not in inimigo])
-    inimigo = inimigo2
+inimigo = inimigo2
 ```
 se nada for encontrado, o jogo incentiva a continuação da exploração, e volta para `exploracao()`.
 
