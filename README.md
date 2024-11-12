@@ -76,7 +76,7 @@ Intereção com o **jogador** para levar a uma parte da vila, **incluem:** motel
 Interação com o jogador em uma vila, selecionando aleatoriamente o tipo de encontro com **random.randint(1, 25)**, dependendo do numero gerado, um npc tera dialago com o jogador, **incluem:** rumores sobre uma caverna misteriosa, uma saudação personalizada ao jogador, observações sobre a aura do personagem, ou uma interação silenciosa com um NPC, uma queste de matar monstros e com um gato preto que aumenta a sorte do **personagem**.
 
 ### def motel()
-Utiliza a variável global **personagem** para saber quantas moedas você tem na mochila,o jogador tiver menos de 10 moedas, uma mensagem informa que ele não tem dinheiro suficiente e o redireciona para a vila, caso o jogador tenha 10 ou mais moedas, o jogo subtrai 10 moedas do inventário e restaura a vida `personagem['Atributos']['Vida'] = personagem['VidaInicial']` e a estamina `personagem['Estamina'] = personagem['EstaminaInicial']` do jogador para seus valores iniciais.
+Utiliza a variável global **personagem** para saber quantas moedas você tem na mochila, caso o jogador tenha 10 ou mais moedas, o jogo subtrai 10 moedas do inventário e restaura a vida `personagem['Atributos']['Vida'] = personagem['VidaInicial']` e a estamina `personagem['Estamina'] = personagem['EstaminaInicial']` do jogador para seus valores iniciais.
 ```
     personagem['Moeda'] -= 10 
     personagem['Atributos']['Vida'] = personagem['VidaInicial']
@@ -84,6 +84,7 @@ Utiliza a variável global **personagem** para saber quantas moedas você tem na
     print(f"você ainda tem R$: {personagem['Moeda']}")
     print(f"Sua saude esta recuperado: \nVida: {personagem['Atributos']['Vida']} \nEstamina: {personagem['Estamina']}")
 ```
+se o jogador tiver menos de 10 moedas, uma mensagem informa que ele não tem dinheiro suficiente e o redireciona para a vila.
 
 ### def mercador()
 Utiliza a variável global **personagem** para saber a quantidade de poções e de moedas que tem na mochila, se o quantidade de moedas for igual ou maior do que o preço da poção selecionada, a função desconta o valor e aumentada em +1 a quantidade de poção comprada na mochila 
