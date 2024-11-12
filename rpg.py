@@ -621,7 +621,7 @@ def novoJogo():
     print("O mundo mudou, os humanos se adaptaram")
     time.sleep(5)
     print("Bem-vindo a \033[1mCivilização Zero\033[0m!") 
-    print("SEncare novos desafios!!\n")
+    print("Encare novos desafios!!\n")
     print("Dê \033[1mvida\033[0m ao seu herói: ")
     nome = str(input("Digite o \033[1mnome\033[0m do seu herói: "))
     idade = int(input("Digite a \033[1midade\033[0m do seu herói: "))
