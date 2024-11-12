@@ -98,9 +98,4 @@ match opcao:
             print(f"Moeda: {personagem["Moeda"]}")
 ```
 caso o **personagem** não tenha moedas suficientes, é exibida uma mensagem informando que ele não possui moedas suficientes para a comprar, e retorna pra **vila()**.
-```
-else:
-     print("Você não tem moeda suficiente!")
-     time.sleep(1)
-     clear() 
-```
+
