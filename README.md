@@ -31,7 +31,7 @@ Chama a variável global do **personagem** para atualizar o seu item em `ArmasGu
 Verifica a operação da maquina se é **Windows** ou **Linux** ele limpa a tela.
 
 ### def batalha()
-Função de batalha onde o **personagem** do **jogador** enfrenta um monstro em turnos, cada um podendo acertar o ataque enquanto errar comparando um random sendo menor que a sorte dele, o **jogador** pode escolher entre **atacar**, **usar itens** da mochila ou **tentar fugir**, se ele atacar o ataque causa dano baseado nas armas do **personagem**, e o monstro pode atacar de volta, se o dano do monstro atingir a vida do **jogador** a zero, ele perde e leva para `playerMorto()`, se ele usar itens, pode tanto se curar, aumentar o dano ou a sorte do **personagem**, se ele tentar fugir tem uma chance de conseguir, em caso que ele n consegue, o monstro ataca novamente, o jogo continua até que um dos lados vença ou o **jogador** fuja com sucesso, tambem tem uma verificação com o **identificador** pra ver a classe ele ta usando e definir o uso de arma dele
+Função de batalha onde o **personagem** do **jogador** enfrenta um monstro em turnos, cada um podendo acertar o ataque enquanto errar comparando um random sendo menor que a sorte dele, o **jogador** pode escolher entre **atacar**, **usar itens** da mochila ou **tentar fugir**, se ele atacar o ataque causa dano baseado nas armas do **personagem**, e o monstro pode atacar de volta, se o dano do monstro atingir a vida do **jogador** a zero, ele perde e leva para `playerMorto()`, se ele usar itens, pode tanto se curar, aumentar o dano ou a sorte do **personagem**, se ele tentar fugir tem uma chance de conseguir, em caso que ele n consegue, o monstro ataca novamente, o jogo continua até que um dos lados vença ou o **jogador** fuja com sucesso, tambem tem uma verificação com o **identificador** pra ver a classe ele ta usando e definir o uso de arma dele.
 
 ### def playerMorto()
 Gerencia a interação quando o **jogador** morre no jogo, ela exibe uma mensagem informando o nome do inimigo que matou o **jogador**, mostrando as estatísticas do **jogador**, como o número de inimigos mortos e cavernas exploradas, após isso, o **jogador** é perguntado se deseja reiniciar o `novoJogo` ou retornar ao `iniciarJogo`, variáveis globais como **personagem**, monstros e inimigo são utilizadas para acessar as informações necessárias.
@@ -58,16 +58,16 @@ Inicia o enredo do jogo, onde o jogador onde tem seu nome armazenado em `persona
 Exploração do **personagem** em diferentes caminhos, com base no nível de estamina do **personagem**, permite que ele explore áreas diversas **incluem:** estradas, vilas, cavernas, locais abandonados, inimigos, bolsas no chão, cada área consome estamina `personagem["Estamina"] -= 2` e pode oferecer recompensas, como moedas, ou batalhas contra monstros, utiliza variáveis globais para acessar informações do **personagem** e dos **monstros**, e armazena o caminho salvo para evitar que o **personagem** quando clicar em uma opção invalida, ele vai pra um caminho.
 
 ### def cavernaPequena()
-Uma caverna onde o **jogador** enfrenta duas batalhas contra monstros aleatórios, exceto o "MoonLord", após derrotar os inimigos, a caverna é marcada como **explorada** e o **jogador** tem uma chance de encontrar uma arma para classe dele, se nada for encontrado, o jogo incentiva a continuação da exploração
+Uma caverna onde o **jogador** enfrenta duas batalhas contra monstros aleatórios, exceto o "MoonLord", após derrotar os inimigos, a caverna é marcada como **explorada** e o **jogador** tem uma chance de encontrar uma arma para classe dele, se nada for encontrado, o jogo incentiva a continuação da exploração.
 
 ### def cavernaMedia()
-Uma caverna onde o **jogador** enfrenta três batalhas contra monstros aleatórios, exceto o "MoonLord", após derrotar os inimigos, a caverna é marcada como **explorada**" e o **jogador** tem uma chance de encontrar uma arma para classe dele, se nada for encontrado, o jogo incentiva a continuação da exploração
+Uma caverna onde o **jogador** enfrenta três batalhas contra monstros aleatórios, exceto o "MoonLord", após derrotar os inimigos, a caverna é marcada como **explorada**" e o **jogador** tem uma chance de encontrar uma arma para classe dele, se nada for encontrado, o jogo incentiva a continuação da exploração.
 
 ### def cavernaGrande()
-Caverna final que enfrenta uma série de batalhas, dependendo do valor da variável conseguencia no começo do jogo, o jogador enfrentará diferentes sequências de inimigos, incluindo **fadas**, **ogros** e o **boss final:** **MoonLord**, a função utiliza a `batalha()` para gerenciar os confrontos, após derrotar o MoonLord, o jogo termina com uma mensagem de agradecimento
+Caverna final que enfrenta uma série de batalhas, dependendo do valor da variável conseguencia no começo do jogo, o jogador enfrentará diferentes sequências de inimigos, incluindo **fadas**, **ogros** e o **boss final:** **MoonLord**, a função utiliza a `batalha()` para gerenciar os confrontos, após derrotar o MoonLord, o jogo termina com uma mensagem de agradecimento.
 
 ### def vila()
-Simula a chegada do **personagem** à **vila**, com uma chance de encontrar **NPCS** ou o **mercador** e locais de **cura**, se `chance = random.randint(1, 10)` for `if chance >= 7:` gera uma função `NPC()`
+Simula a chegada do **personagem** à **vila**, com uma chance de encontrar **NPCS** ou o **mercador** e locais de **cura**, se `chance = random.randint(1, 10)` for `if chance >= 7:` gera uma função `NPC()`.
 
 ### def opcaoVila()
 Intereção com o **jogador** para levar a uma parte da vila, **incluem:** motel, mercador e exploracao.
